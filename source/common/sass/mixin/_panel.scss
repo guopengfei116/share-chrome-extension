@@ -1,0 +1,16 @@
+@mixin panel ($index: 100, $width: 100px, $height: 100px, $boxHeight:null, $X:0, $Y:0) {
+    z-index: $index;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: $width;
+    @if $boxHeight {
+        height: $boxHeight;
+    }@else {
+        height: $height;
+    }
+    margin-left: (-$width / 2) - $X;
+    margin-top: (-$height / 2) - $Y;
+    border:1px solid #909090;
+    background-color: #ffffff;
+}

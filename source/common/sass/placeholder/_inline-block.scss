@@ -1,0 +1,7 @@
+%inline-block {
+    display : inline-block;
+    @if $browser-pc and $prefix-for-lte7{
+        *display : inline;
+        *zoom : 1;
+    }
+}

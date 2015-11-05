@@ -1,0 +1,25 @@
+
+//相对单位计算基准,取24
+//------------------------------------------------
+$rem-base: 24px !default;
+:root {
+    font-size: $rem-base;
+}
+
+//link
+//------------------------------------------------
+$LinkColor : #000  !default;
+
+//radius
+//------------------------------------------------
+$BaseRadiusSize : 4px  !default;
+
+//opacity
+//------------------------------------------------
+$base-opacity-size : 0.4  !default;
+
+//遮盖层index
+//------------------------------------------------
+$BaseMaskIndex : 10          !default;
+$BaseMaskOpacitySize : 0.4   !default;
+

@@ -1,0 +1,142 @@
+.fieldset {
+    @include prefix(transition, all 0.3s);
+    &_text {
+        @include prefix(transition, all 0.3s);
+    }
+}
+
+.form {
+    &-panel {
+        margin: 0 auto;
+        max-width: 480px;
+        width: rem(480);
+        border: 1px solid transparent;
+        .fieldset {
+            position: relative;
+            margin-top: rem(36);
+            border: 2px solid $fieldset-border-color;
+            background-color: rgba(#fff, 0.8);
+            color: $fieldset-font-color;
+            &-error {
+                border-color: rgba(255, 0, 0, 0.4);
+                .fieldset_text {
+                    //background-color: rgba(255, 0, 0, 0.4);
+                }
+                .fieldset_warn {
+                    display: block;
+                }
+            }
+            &-group {
+                position: relative;
+                padding-left: rem(42);
+                &_label {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: rem(42);
+                    height: rem(42);
+                    line-height: rem(42);
+                    font-size: rem(20);
+                    text-align: center;
+                    color: $fieldset-border-color;
+                }
+            }
+            &_text {
+                @include prefix(box-sizing, border-box);
+                display: block;
+                padding: rem(10) 1px;
+                width: 100%;
+                background-color: transparent;
+                line-height: rem(20);
+                font-size: rem(14);
+                &-focus {
+                    border-left: none;
+                }
+            }
+            &_button {
+                @include prefix(box-sizing, border-box);
+                display: block;
+                width: 100%;
+                height: rem(46);
+                background-color: $fieldset-border-color;
+                line-height: rem(46);
+                font-size: rem(20);
+                text-align: center;
+                color: #fff;
+            }
+            &_warn {
+                display: none;
+                position: absolute;
+                padding: 8px 12px;
+                border: 1px solid #d8dee4;
+                background-color: #fff;
+                font-size: 12px;
+                color: #d8dee4;
+                &-arrow {
+                    @include arrow(right, 8px, 8px, #d8dee4);
+                    left:-8px;
+                    top:50%;
+                    margin-top:-8px;
+                    &-mask {
+                        left:-7px;
+                        border-right-color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    &-list {
+        .fieldset {
+            &_label {
+                display: block;
+            }
+            &_text {
+                display: block;
+                padding: 7px;
+                width: 270px;
+                border: 1px solid #dce1e4;
+                font-size: 12px;
+                line-height: 1.5;
+            }
+            &_textarea {
+
+            }
+        }
+    }
+    &-tool {
+        .fieldset {
+            &_text {
+                padding: 6px 5px;
+                width: 240px;
+                border: 1px solid #e5e5e5;
+                font-size: 12px;
+                line-height: 16px;
+                &:focus {
+                    border-color: #c9c9c9;
+                }
+            }
+            &_button {
+                @include inline-block();
+                margin-left: 8px;
+                width: 30px;
+                background-color: #22baa0;
+                line-height: 30px;
+                text-align: center;
+                color: #fff;
+                &:hover {
+                    background-color: #1db198;
+                }
+            }
+        }
+    }
+}
+.change {
+    width:285px; 
+    &-field {
+        width: 100%;
+    }
+    
+}
+
+
+

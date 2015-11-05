@@ -1,0 +1,10 @@
+@mixin center ($index: 100, $width: 100px, $height: 100px, $offsetX:0, $offsetY:0) {
+    z-index: $index;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: $width;
+    height: $height;
+    margin-left: (-$width / 2) - $offsetX;
+    margin-top: (-$height / 2) - $offsetY;
+}
