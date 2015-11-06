@@ -23,6 +23,7 @@ exports.options = {
 if(!gruntProject.debug) {
     exports.options.port = 9801;
     exports.options.keepalive = true;
+    exports.options.livereload = false
 }
 
 /**
