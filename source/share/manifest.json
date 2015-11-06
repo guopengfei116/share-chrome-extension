@@ -1,0 +1,33 @@
+{
+    "name" : "Share",
+    "version" : "1.0",
+    "manifest_version" : 2,
+    "default_locale" : "zh",
+    "description" : "一键分享facebbok",
+    "icons" : {
+        "16" : "img/icon_16.png",
+        "48" : "img/icon_48.png"
+    },
+    "browser_action": {
+        "default_title" : "share",
+        "default_icon" : "img/icon_16.png",
+        "default_popup" : "popup.html"
+    },
+    "permissions": [
+        "*://*/*",
+        "file:///*",
+        "tabs",
+        "bookmarks",
+        "background",
+        "chrome://favicon/",
+        //"contentManus",
+        "cookies",
+        //"experimental",
+        "geolocation",
+        "history",
+        "idle",
+        "management",
+        "notifications",
+        "unlimitedStorage"
+    ]
+}

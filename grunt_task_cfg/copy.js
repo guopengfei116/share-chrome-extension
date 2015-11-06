@@ -11,7 +11,19 @@ exports.common = {
     expand: true,
     flatten: false,
     cwd: gruntProject.src,
-    src: ['index.html', 'favicon.ico', '*/index.html', '*/favicon.ico', '*/tpl/*/*.html', '*/js/*.*', '*/css/*.css', '*/img/*.*', '*/media/**/*'],
+    src: [
+        'manifest.json',
+        'index.html',
+        'favicon.ico',
+        '*/index.html',
+        '*/favicon.ico',
+        '*/tpl/*/*.html',
+        '*/js/*.*',
+        '*/css/*.css',
+        '*/img/*.*',
+        '*/media/**/*',
+        '*/_locals/**/*'
+    ],
     dest: gruntProject.prd
 };
 
@@ -27,7 +39,19 @@ if(!gruntProject.debug){
         expand: true,
         flatten: false,
         cwd: gruntProject.prd,
-        src: ['index.html', 'favicon.ico', '*/index.html', '*/favicon.ico', '*/tpl/**/*.html', '*/js/*.json', '*/img/*.*', '!*/img/*.{png,jpg,jpeg}', '*/media/**/*'],
+        src: [
+            'manifest.json',
+            'index.html',
+            'favicon.ico',
+            '*/index.html',
+            '*/favicon.ico',
+            '*/tpl/**/*.html',
+            '*/js/*.json',
+            '*/img/*.*',
+            '!*/img/*.{png,jpg,jpeg}',
+            '*/media/**/*',
+            '*/_locals/**/*'
+        ],
         dest: gruntProject.dest
     };
 }

@@ -2,22 +2,25 @@
     "name" : "share",
     "version" : "1.0",
     "manifest_version" : 2,
+    "default_locale" : "zh",
     "description" : "this is a Plug-in",
     "icons" : {
-        "16" : "icon_16.png",
-        "48" : "icon_48.png",
-        "128" : "icon_128.png"
+        "16" : "icon_16.png"
     },
-    "default_locale" : "en",
-    "background_page" : "bg.html",
+    "browser_action": {
+        "default_title" : "share",
+        "default_icon" : "icon_16.png",
+        "default_popup" : "popup.html"
+    },
     "permissions" : [
+        "http://api.flickr.com/",
         "tabs",
         "bookmarks",
         "background",
         "chrome://favicon/",
-        "contentManus",
+        //"contentManus",
         "cookies",
-        "experimental",
+        //"experimental",
         "geolocation",
         "history",
         "idle",
@@ -28,15 +31,16 @@
         "https://*.google.com/",
         "unlimitedStorage"
     ],
+
+
+
+
+
+
     "app" : {
 
     },
     "homepage_url" : "",
-    "browser_action" : {
-        "default_title" : "share",
-        "default_icon" : "icon_32.png",
-        "default_popup" : "popup.html"
-    },
     "page_action" : {
 
     },
@@ -60,7 +64,7 @@
     "intents" : {
 
     },
-    "key" : "",
+    "key" : "publicKey",
     "minimum_chrome_version" : "17",
     "nacl_modules" : [
 
