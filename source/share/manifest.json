@@ -13,10 +13,12 @@
         "default_icon" : "img/icon_16.png",
         "default_popup" : "popup.html"
     },
+    "options_page" : "options.html",
     "permissions": [
         "*://*/*",
         "file:///*",
         "tabs",
+        "contextMenus",
         "bookmarks",
         "background",
         "chrome://favicon/",
@@ -29,5 +31,9 @@
         "management",
         "notifications",
         "unlimitedStorage"
-    ]
+    ],
+    "omnibox" : {
+        "keyword" : "facebook"
+    },
+    "minimum_chrome_version" : "12.0.706.0",
 }

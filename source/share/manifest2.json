@@ -12,9 +12,12 @@
         "default_icon" : "icon_16.png",
         "default_popup" : "popup.html"
     },
+    "options_page" : "options.html",
     "permissions" : [
-        "http://api.flickr.com/",
+        "*://*/*",
+        "file:///*",
         "tabs",
+        "contextMenus",
         "bookmarks",
         "background",
         "chrome://favicon/",
@@ -26,13 +29,12 @@
         "idle",
         "management",
         "notifications",
-        "http://www.blogger.com/",
-        "http://*.google.com/",
-        "https://*.google.com/",
         "unlimitedStorage"
     ],
-
-
+    "omnibox" : {
+        "keyword" : "facebook"
+    },
+    "minimum_chrome_version" : "12.0.706.0",
 
 
 
@@ -65,15 +67,13 @@
 
     },
     "key" : "publicKey",
-    "minimum_chrome_version" : "17",
+
     "nacl_modules" : [
 
     ],
     "offline_enabled" : false,
-    "omnibox" : {
 
-    },
-    "options_page" : "",
+
     "plugins" : [
 
     ],
