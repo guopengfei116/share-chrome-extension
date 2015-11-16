@@ -5,9 +5,8 @@ window.fbAsyncInit = function() {
         xfbml      : true,
         version    : 'v0.1'
     });
-    console.log(2);
 };
-console.log(8857);
+
 (function(d, s, id){
     console.log(3);
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -17,5 +16,4 @@ console.log(8857);
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-var bgPage = chrome.extension.getBackgroundPage();
-bgPage.pengfei = 
+

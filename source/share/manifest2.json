@@ -52,9 +52,7 @@
     "chrome_url_overrides" : {
 
     },
-    "content_scripts" : [
 
-    ],
     "content_security_policy" : "",
     "file_browser_handlers" : [
 
