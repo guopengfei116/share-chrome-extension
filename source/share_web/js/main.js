@@ -4,14 +4,15 @@ var $ = require('./libs/jquery-2.1.1.min.js');
 
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '1652508341698746',
+        appId      : '548875461811953',
+        //1652508341698746
         cookie     : true,
+        status     : true,
+        oauth      : true,
         status     : true,
         xfbml      : true,
         version    : 'v2.5'
     });
-
-
 
     $(function () {
         $('#feed').on('click', function () {
@@ -53,23 +54,63 @@ window.fbAsyncInit = function() {
             });
         });
 
-        $('#login').on('click', function () {
-            FB.login(function(){
-                console.log('login');
+        $('#auto-feed').on('click', function () {
+            FB.api('/me/feed', 'post', {
+                message : 'guopengfei我很高兴啊，怎么了这是',
+                image : 'https://scontent-lax3-1.xx.fbcdn.net/hprofile-xlf1/v/t1.0-1/c16.14.178.178/s50x50/302800_104699016361494_1775742767_n.jpg?oh=61a26e562f5a9298402f8c9ad48a9caf&oe=56BAE94C'
+            }, function (response) {
                 console.log(arguments);
-            }, {scope: 'publish_actions'});
+            })
         });
 
-        FB.getLoginStatus(function(response) {
-            console.log('getLoginStatus');
-            if (response.status === 'connected') {
-                console.log('Logged in.');
-            }
-            else {
-                console.log('Logged out.');
-                FB.login();
-            }
+        $('#login').on('click', function () {
+            getLoginStatus();
+
+            FB.api('/me', {
+                "fields": "id, name, picture"
+            }, function(response) {
+                console.log(arguments);
+            });
+
+
+
+            FB.getAuthResponse(function () {
+               console.log(arguments);
+            });
+
+            FB.login(function(response){
+                if (response && response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    FB.api('/me', {
+                        "fields": "id, name, photo"
+                    }, function(response) {
+                        console.log(arguments);
+                        console.log('Good to see you, ' + response.name + '.');
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+                console.log('login');
+                console.log(arguments);
+            });
+
+
+            //, {scope: 'publish_actions'}
         });
+
+        var getLoginStatus = function () {
+            console.log('getLoginStatus_befor');
+            FB.getLoginStatus(function(response) {
+                console.log('getLoginStatus');
+                if (response.status === 'connected') {
+                    console.log('Logged in.');
+                }
+                else {
+                    console.log('Logged out.');
+                    FB.login();
+                }
+            });
+        };
     });
 
     /*FB.Event.subscribe('auth.authResponseChange', function(response) {
