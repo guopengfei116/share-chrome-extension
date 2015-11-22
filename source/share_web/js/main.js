@@ -4,7 +4,9 @@ var $ = require('./libs/jquery-2.1.1.min.js');
 
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '548875461811953',
+        // 春争 FBDesktop  548875461811953
+        // 郭鹏飞 share  1652508341698746
+        appId      : '1652508341698746',
         //1652508341698746
         cookie     : true,
         status     : true,
@@ -57,7 +59,16 @@ window.fbAsyncInit = function() {
         $('#auto-feed').on('click', function () {
             FB.api('/me/feed', 'post', {
                 message : 'guopengfei我很高兴啊，怎么了这是',
-                image : 'https://scontent-lax3-1.xx.fbcdn.net/hprofile-xlf1/v/t1.0-1/c16.14.178.178/s50x50/302800_104699016361494_1775742767_n.jpg?oh=61a26e562f5a9298402f8c9ad48a9caf&oe=56BAE94C'
+                image : 'http://www.zhangxinxu.com/image/study/s/s256/mm1.jpg'
+            }, function (response) {
+                console.log(arguments);
+            })
+        });
+
+        $('#auto-share').on('click', function () {
+            FB.api('/me/share', 'post', {
+                message : 'guopengfei我很高兴能够自动分享',
+                image : 'http://www.zhangxinxu.com/image/study/s/s256/mm1.jpg'
             }, function (response) {
                 console.log(arguments);
             })
@@ -111,6 +122,22 @@ window.fbAsyncInit = function() {
                 }
             });
         };
+
+        $('#create-object').on('click', function () {
+            FB.api(
+                "/me/objects/object",
+                "POST",
+                {
+                    "object": "{\"fb:app_id\":\"548875461811953\",\"og:type\":\"object\",\"og:url\":\"http://www.fbdesktop.com/\",\"og:title\":\"Sample Object\",\"og:image\":\"http:\\\/\\\/www.zhangxinxu.com\\\/image\\\/study\\\/s\\\/s256\\\/mm1.jpg\"}"
+                },
+                function (response) {
+                    if (response && !response.error) {
+                        /* handle the result */
+                    }
+                }
+            );
+        });
+
     });
 
     /*FB.Event.subscribe('auth.authResponseChange', function(response) {
