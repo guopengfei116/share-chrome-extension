@@ -1,0 +1,36 @@
+.select {
+    width: 130px;
+    border: 1px solid #e9e9e9;
+    font-size: 14px;
+    color: #3f3f3f;
+    &_main {
+        position: relative;
+        padding-right: 20px;
+        border: none;
+        line-height: 20px;
+        &_text {
+            height: 20px;
+            padding-left: 6px;
+        }
+        &_btn {
+            position: absolute;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+        }
+    }
+    &_content {
+        &_list {
+            padding: 0 8px;
+            line-height: 36px;
+            text-align: left;
+            &:hover {
+                background-color: pink;
+            }
+            &_value {
+                padding-left: 6px;
+            }
+        }
+    }
+}

@@ -1,19 +1,15 @@
 /*
- grunt-sprite插件生成函数重构
+ grunt-sprite插件生成函数自定义
 */
-@mixin sprites($sprites) {
-  @each $sprite in $sprites {
-    $sprite-name: nth($sprite, 10);
-    &-#{$sprite-name} {
-      @include sprite($sprite);
-    }
-  }
-}
-
-@mixin get-sprites($icon-names) {
+@mixin get-sprites($sprites-names) {
   .icon {
     @include inline-block();
-    @include sprites($icon-names);
+    @each $sprite in $sprites-names {
+      $sprite-name: nth($sprite, 10);
+      &-#{$sprite-name} {
+        @include sprite($sprite);
+      }
+    }
   }
 }
 

@@ -1,4 +1,5 @@
 .login {
+  position: relative;
   $panelParam : (
     width : 430px,
     height : 312px,
@@ -6,10 +7,18 @@
   );
   @include panel-center($panelParam);
   @include radius();
-  background-image : url("/share_wen/img/logo.png");
-  background-repeat : no-repeat;
+
+  &_logo {
+    height: 126px;
+    background-image : url("/share_web/img/logo.png");
+    background-repeat : no-repeat;
+  }
 
   &_cancel {
+    z-index: 1001;
+    position: absolute;
+    top : -15px;
+    right : -15px;
     @include radius(50%);
     width : 30px;
     height : 30px;
@@ -21,13 +30,19 @@
     padding : 24px 0;
 
     &_item {
-      @include radius();
-      width : 220px;
+      margin: 0 auto;
+      padding: 0 5px;
+      width : 210px;
       height : 50px;
       line-height : 50px;
+      @include radius();
       background-color : #5d82d1;
       font-size : 12px;
       color : #fff;
     }
+  }
+
+  &_select {
+    margin: 0 auto;
   }
 }

@@ -23,8 +23,8 @@
     position: fixed;
     left: 50%;
     top: 50%;
-    margin-left: (-$width + borderWidth / 2) - $offsetX;
-    margin-top: (-$height + borderWidth / 2) - $offsetY;
+    margin-left: (-$width + $borderWidth) / 2 - $offsetX;
+    margin-top: (-$height + $borderWidth) / 2 - $offsetY;
     width: $width;
     height: $height;
     border:$borderWidth solid $borderColor;

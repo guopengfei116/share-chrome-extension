@@ -1,10 +1,37 @@
 <article class="login">
-    <a class="login_cancel"></a>
+    <div class="login_logo"></div>
+    <a class="login_cancel" ng-click="cancel">
+        <i class="icon icon-cancel"></i>
+    </a>
     <ul class="login_method">
         <li class="login_method_item">
             <a class="icon icon-facebook"></a>
             <span>Sign in with Facebook</span>
         </li>
     </ul>
-    <div class="login_select"></div>
+    <div class="select select-host select-btn login_select" data-value="US">
+        <div class="select_main">
+            <p class="select_main_text select_target">Einglish</p>
+            <button class="select_main_btn select_target">
+                <i class="icon icon-arrow_right"></i>
+            </button>
+        </div>
+        <ul class="select_content">
+            <li class="select_content_list">
+                <a class="select_content_list_value" data-value="CN">中文</a>
+            </li>
+            <li class="select_content_list">
+                <a class="select_content_list_value" data-value="TR">Türkçe</a>
+            </li>
+            <li class="select_content_list">
+                <a class="select_content_list_value" data-value="ES">español</a>
+            </li>
+            <li class="select_content_list">
+                <a class="select_content_list_value" data-value="PT">português</a>
+            </li>
+            <li class="select_content_list">
+                <a class="select_content_list_value" data-value="US">Einglish</a>
+            </li>
+        </ul>
+    </div>
 </article>
