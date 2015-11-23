@@ -1,8 +1,7 @@
 
-chrome.browserAction.setBadgeBackgroundColor({
-    color : [150, 220, 100, 100]
-});
-
+/*
+* 监听icon事件
+* */
 $('#share').on('click', function () {
     console.log(1);
     var bgPage = chrome.extension.getBackgroundPage();
@@ -17,5 +16,10 @@ $('#share').on('click', function () {
     console.log(bgPage);
     console.log(bgPage.href);
     console.log(bgPage.location.href);
-});
 
+    chrome.tabs.getSelected(null, function(tab) {
+        chrome.tabs.sendRequest(tab.id, {greeting: "login"}, function(response) {
+            console.log(response.farewell);
+        });
+    });
+});

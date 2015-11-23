@@ -1,6 +1,7 @@
 .login {
   position: relative;
   $panelParam : (
+    index : 9999,
     width : 430px,
     height : 312px,
     borderColor : #b5b5b5
@@ -15,14 +16,17 @@
   }
 
   &_cancel {
-    z-index: 1001;
+    cursor: pointer;
+    z-index: 10001;
     position: absolute;
-    top : -15px;
-    right : -15px;
+    top : -12px;
+    right : -12px;
     @include radius(50%);
-    width : 30px;
-    height : 30px;
-    line-height: 30px;
+    width : 26px;
+    height : 26px;
+    line-height: 26px;
+    border: 1px solid #b5b5b5;
+    background-color: #fff;
     text-align : center;
   }
 
