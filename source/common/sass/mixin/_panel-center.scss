@@ -1,0 +1,53 @@
+@mixin panel-center ($option) {
+    $o : (
+        index : 999,
+        width : 100px,
+        height : 100px,
+        borderWidth : 1px,
+        borderColor : #909090,
+        backgroundColor : #ffffff,
+        offsetX : 0,
+        offsetY : 0
+    );
+    $newO : map-merge($o, $option);
+
+    $width : map-get($newO, width);
+    $height : map-get($newO, height);
+    $borderWidth : map-get($newO, borderWidth);
+    $borderColor : map-get($newO, borderColor);
+    $backgroundColor : map-get($newO, backgroundColor);
+    $offsetX : map-get($newO, offsetX);
+    $offsetY : map-get($newO, offsetY);
+
+    z-index: map-get($newO, index);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: (-$width + borderWidth / 2) - $offsetX;
+    margin-top: (-$height + borderWidth / 2) - $offsetY;
+    width: $width;
+    height: $height;
+    border:$borderWidth solid $borderColor;
+    background-color: $backgroundColor;
+}
+
+
+/*
+  已弃用
+*/
+@mixin panel ($index: 100, $width: 100px, $height: 100px, $boxHeight:null, $X:0, $Y:0) {
+    z-index: $index;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: $width;
+    @if $boxHeight {
+        height: $boxHeight;
+    }@else {
+        height: $height;
+    }
+    margin-left: (-$width / 2) - $X;
+    margin-top: (-$height / 2) - $Y;
+    border:1px solid #909090;
+    background-color: #ffffff;
+}

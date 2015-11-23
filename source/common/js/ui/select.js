@@ -23,7 +23,7 @@ $.extend(Select.prototype, {
     textarea : '.select_main_textarea',
     textarea_value : '.select_main_textarea-value',
     text : '.select_main_text',
-    optionsTarget : '.select_content_list_value',
+    optionsTarget : '.select_options_target',
     optionsSelector : '.select_content_list',
     initialized : false,
 

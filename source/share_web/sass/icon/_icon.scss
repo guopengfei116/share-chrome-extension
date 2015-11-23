@@ -1,0 +1,4 @@
+@import "sprite_icon";
+
+$icon-names : ($add_photo, $arrow_right, $cancel, $facebook, $logo_16, $logo_42, $upload_close, $upload_loding);
+@include get-sprites($icon-names);

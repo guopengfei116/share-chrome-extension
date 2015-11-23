@@ -1,0 +1,158 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$add-photo-name: 'add_photo';
+$add-photo-x: 0px;
+$add-photo-y: 0px;
+$add-photo-offset-x: 0px;
+$add-photo-offset-y: 0px;
+$add-photo-width: 47px;
+$add-photo-height: 47px;
+$add-photo-total-width: 117px;
+$add-photo-total-height: 89px;
+$add-photo-image: '../img/icons.png';
+$add-photo: (0px, 0px, 0px, 0px, 47px, 47px, 117px, 89px, '../img/icons.png', 'add_photo', );
+$arrow-right-name: 'arrow_right';
+$arrow-right-x: 89px;
+$arrow-right-y: 44px;
+$arrow-right-offset-x: -89px;
+$arrow-right-offset-y: -44px;
+$arrow-right-width: 6px;
+$arrow-right-height: 11px;
+$arrow-right-total-width: 117px;
+$arrow-right-total-height: 89px;
+$arrow-right-image: '../img/icons.png';
+$arrow-right: (89px, 44px, -89px, -44px, 6px, 11px, 117px, 89px, '../img/icons.png', 'arrow_right', );
+$cancel-name: 'cancel';
+$cancel-x: 105px;
+$cancel-y: 28px;
+$cancel-offset-x: -105px;
+$cancel-offset-y: -28px;
+$cancel-width: 10px;
+$cancel-height: 10px;
+$cancel-total-width: 117px;
+$cancel-total-height: 89px;
+$cancel-image: '../img/icons.png';
+$cancel: (105px, 28px, -105px, -28px, 10px, 10px, 117px, 89px, '../img/icons.png', 'cancel', );
+$facebook-name: 'facebook';
+$facebook-x: 47px;
+$facebook-y: 0px;
+$facebook-offset-x: -47px;
+$facebook-offset-y: 0px;
+$facebook-width: 42px;
+$facebook-height: 42px;
+$facebook-total-width: 117px;
+$facebook-total-height: 89px;
+$facebook-image: '../img/icons.png';
+$facebook: (47px, 0px, -47px, 0px, 42px, 42px, 117px, 89px, '../img/icons.png', 'facebook', );
+$logo-16-name: 'logo_16';
+$logo-16-x: 89px;
+$logo-16-y: 28px;
+$logo-16-offset-x: -89px;
+$logo-16-offset-y: -28px;
+$logo-16-width: 16px;
+$logo-16-height: 16px;
+$logo-16-total-width: 117px;
+$logo-16-total-height: 89px;
+$logo-16-image: '../img/icons.png';
+$logo-16: (89px, 28px, -89px, -28px, 16px, 16px, 117px, 89px, '../img/icons.png', 'logo_16', );
+$logo-42-name: 'logo_42';
+$logo-42-x: 0px;
+$logo-42-y: 47px;
+$logo-42-offset-x: 0px;
+$logo-42-offset-y: -47px;
+$logo-42-width: 42px;
+$logo-42-height: 42px;
+$logo-42-total-width: 117px;
+$logo-42-total-height: 89px;
+$logo-42-image: '../img/icons.png';
+$logo-42: (0px, 47px, 0px, -47px, 42px, 42px, 117px, 89px, '../img/icons.png', 'logo_42', );
+$upload-close-name: 'upload_close';
+$upload-close-x: 89px;
+$upload-close-y: 0px;
+$upload-close-offset-x: -89px;
+$upload-close-offset-y: 0px;
+$upload-close-width: 28px;
+$upload-close-height: 28px;
+$upload-close-total-width: 117px;
+$upload-close-total-height: 89px;
+$upload-close-image: '../img/icons.png';
+$upload-close: (89px, 0px, -89px, 0px, 28px, 28px, 117px, 89px, '../img/icons.png', 'upload_close', );
+$upload-loding-name: 'upload_loding';
+$upload-loding-x: 42px;
+$upload-loding-y: 47px;
+$upload-loding-offset-x: -42px;
+$upload-loding-offset-y: -47px;
+$upload-loding-width: 30px;
+$upload-loding-height: 30px;
+$upload-loding-total-width: 117px;
+$upload-loding-total-height: 89px;
+$upload-loding-image: '../img/icons.png';
+$upload-loding: (42px, 47px, -42px, -47px, 30px, 30px, 117px, 89px, '../img/icons.png', 'upload_loding', );
+$spritesheet-width: 117px;
+$spritesheet-height: 89px;
+$spritesheet-image: '../img/icons.png';
+$spritesheet-sprites: ($add-photo, $arrow-right, $cancel, $facebook, $logo-16, $logo-42, $upload-close, $upload-loding, );
+$spritesheet: (117px, 89px, '../img/icons.png', $spritesheet-sprites, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
