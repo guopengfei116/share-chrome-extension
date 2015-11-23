@@ -6,7 +6,7 @@
     "description" : "一键分享facebbok",
     "icons" : {
         "16" : "img/icon_16.png",
-        "48" : "img/icon_48.png"
+        "96" : "img/icon_96.png"
     },
     "browser_action": {
         "default_title" : "share",

@@ -10,7 +10,9 @@ exports.options = {
         'Tooltip': gruntProject.src + '/common/js/ui/tooltip.js',
         'Dropdown': gruntProject.src + '/common/js/ui/dropdown.js',
         'Select': gruntProject.src + '/common/js/ui/select.js',
-        'Checkbox': gruntProject.src + '/common/js/ui/checkbox.js'
+        'Checkbox': gruntProject.src + '/common/js/ui/checkbox.js',
+        'Cookie': gruntProject.src + '/share_web/js/util/cookie.js',
+        'Authentication': gruntProject.src + '/share_web/js/util/Authentication.js'
     }
 };
 
