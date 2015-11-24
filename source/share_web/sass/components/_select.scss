@@ -26,10 +26,11 @@
     &_content {
         &_list {
             padding: 0 8px;
-            line-height: 36px;
+            line-height: 22px;
             text-align: left;
             &:hover {
-                background-color: pink;
+                background-color: #f99790;
+                color: #fff;
             }
             &_value {
                 padding-left: 6px;

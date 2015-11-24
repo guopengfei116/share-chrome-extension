@@ -1,0 +1,42 @@
+<article class="share">
+    <a class="cancel_circle" ng-click="cancel()">
+        <i class="icon icon-cancel"></i>
+    </a>
+    <ul class="share_nav">
+        <li class="share_nav_item">{{ language.share }}</li>
+    </ul>
+    <ul class="share_content">
+        <li class="share_content_feed">
+            <div class="avatar">
+                <img src="{{ avatar }}" />
+            </div>
+            <div class="hint">
+                <i class="icon icon-logo_16"></i>
+                <span class="hint_words">Message for facebook</span>
+                <span class="hint_font">150</span>
+            </div>
+            <div class="input">
+                <textarea></textarea>
+            </div>
+            <div class="media">
+                <img src="" />
+                <p></p>
+            </div>
+            <div class="upload">
+                <p class="upload_hint">Share up to 1 images</p>
+                <ul class="cf">
+                    <li class="upload_imgs">
+                        <img src="/img/loading.gif" />
+                    </li>
+                </ul>
+            </div>
+            <div class="operation">
+                <div class="operation_upload">
+                    <a class="icon icon-add_photo"></a>
+                    <span class="operation_upload_hint">Creat an image</span>
+                </div>
+                <button class="operation_share"></button>
+            </div>
+        </li>
+    </ul>
+</article>

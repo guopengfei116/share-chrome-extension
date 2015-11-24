@@ -1,5 +1,14 @@
 @import "../../common/sass/common";
 
 @import "./icon/icon";
+
+@import "./components/cancel_circle";
+@import "./components/loading";
 @import "./components/select";
+
 @import "./page/login";
+@import "./page/share";
+
+body {
+  background-color: rgba(255, 255, 255, 0.4);
+}

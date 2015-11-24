@@ -1,0 +1,14 @@
+.cancel_circle {
+  cursor: pointer;
+  z-index: 10001;
+  position: absolute;
+  top : -12px;
+  right : -12px;
+  @include radius(50%);
+  width : 26px;
+  height : 26px;
+  line-height: 26px;
+  border: 1px solid #b5b5b5;
+  background-color: #fff;
+  text-align : center;
+}

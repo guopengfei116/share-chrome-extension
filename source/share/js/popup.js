@@ -3,7 +3,7 @@
 * 监听icon事件
 * */
 $('#share').on('click', function () {
-    console.log(1);
+    // 获取背景页window对象
     var bgPage = chrome.extension.getBackgroundPage();
 
     function saveTabData(tab, data) {
@@ -13,13 +13,11 @@ $('#share').on('click', function () {
             localStorage[tab.url] = data; // OK to store data
         }
     }
-    console.log(bgPage);
-    console.log(bgPage.href);
     console.log(bgPage.location.href);
 
     chrome.tabs.getSelected(null, function(tab) {
         chrome.tabs.sendRequest(tab.id, {greeting: "login"}, function(response) {
-            console.log(response.farewell);
+            console.log(response);
         });
     });
 });

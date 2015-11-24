@@ -1,15 +1,15 @@
 <article class="login">
     <div class="login_logo"></div>
-    <a class="login_cancel" ng-click="cancel">
+    <a class="cancel_circle" ng-click="cancel()">
         <i class="icon icon-cancel"></i>
     </a>
     <ul class="login_method">
         <li class="login_method_item">
             <a class="icon icon-facebook"></a>
-            <span>Sign in with Facebook</span>
+            <span>{{ language.login }}</span>
         </li>
     </ul>
-    <div class="select select-host select-btn login_select" data-value="US">
+    <div class="select select-host select-btn login_select" data-value="US" data-offset="0">
         <div class="select_main">
             <p class="select_main_text select_target">Einglish</p>
             <button class="select_main_btn select_target">
@@ -18,19 +18,19 @@
         </div>
         <ul class="select_content">
             <li class="select_content_list">
-                <a class="select_content_list_value" data-value="CN">中文</a>
+                <a class="select_content_list_value select_options_target" data-value="CN" ng-click="languageChange('CN')">中文</a>
             </li>
             <li class="select_content_list">
-                <a class="select_content_list_value" data-value="TR">Türkçe</a>
+                <a class="select_content_list_value select_options_target" data-value="TR" ng-click="languageChange('TR')">Türkçe</a>
             </li>
             <li class="select_content_list">
-                <a class="select_content_list_value" data-value="ES">español</a>
+                <a class="select_content_list_value select_options_target" data-value="ES" ng-click="languageChange('ES')">español</a>
             </li>
             <li class="select_content_list">
-                <a class="select_content_list_value" data-value="PT">português</a>
+                <a class="select_content_list_value select_options_target" data-value="PT" ng-click="languageChange('PT')">português</a>
             </li>
             <li class="select_content_list">
-                <a class="select_content_list_value" data-value="US">Einglish</a>
+                <a class="select_content_list_value select_options_target" data-value="US" ng-click="languageChange('US')">Einglish</a>
             </li>
         </ul>
     </div>

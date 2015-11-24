@@ -1,6 +1,10 @@
 @mixin panel-center ($option) {
     $o : (
         index : 999,
+        padding-left : 0,
+        padding-right : 0,
+        padding-top : 0,
+        padding-bottom : 0,
         width : 100px,
         height : 100px,
         borderWidth : 1px,
@@ -11,6 +15,12 @@
     );
     $newO : map-merge($o, $option);
 
+    $index : map-get($newO, index);
+    $padding-left : map-get($newO, padding-left);
+    $padding-right : map-get($newO, padding-right);
+    $padding-top : map-get($newO, padding-top);
+    $padding-bottom : map-get($newO, padding-bottom);
+    $index : map-get($newO, index);
     $width : map-get($newO, width);
     $height : map-get($newO, height);
     $borderWidth : map-get($newO, borderWidth);
@@ -19,12 +29,12 @@
     $offsetX : map-get($newO, offsetX);
     $offsetY : map-get($newO, offsetY);
 
-    z-index: map-get($newO, index);
+    z-index: $index;
     position: fixed;
     left: 50%;
     top: 50%;
-    margin-left: (-$width + $borderWidth) / 2 - $offsetX;
-    margin-top: (-$height + $borderWidth) / 2 - $offsetY;
+    margin-left: (-$width - $padding-left - $padding-right - $borderWidth * 2) / 2 - $offsetX;
+    margin-top: (-$height - $padding-top - $padding-bottom - $borderWidth * 2) / 2 - $offsetY;
     width: $width;
     height: $height;
     border:$borderWidth solid $borderColor;

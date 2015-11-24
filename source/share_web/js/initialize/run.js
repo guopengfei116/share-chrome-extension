@@ -2,39 +2,46 @@
 /*
  * 页面初始化之前，验证用户登录状态和权限，进行页面跳转
  * */
-oasgames.mdataApp.run([
+niceShare.ShareApp.run([
     '$rootScope',
     '$location',
     '$log',
-    'UserAuth',
-    'AUTHORITY',
-    function ($rootScope, $location, $log, UserAuth, AUTHORITY) {
+    'GetLanguage',
+    function ($rootScope, $location, $log, GetLanguage) {
 
-        $rootScope.user = {};
+        /*
+        * 删除loading
+        * 初始化Ui
+        * */
+        window.onload = function () {
+            console.log('window onload');
+            $('.loading').remove();
+            var ui = new Ui();
+            ui.init();
+        };
 
-        // 初始化用户属性
-        $rootScope.$on('initUserProperty', function () {
-            var userAuthority = authentication.get('authority');
-            var userName = authentication.get('account');
-            var userToken = authentication.get('token');
-            if(userAuthority && userName && userToken) {
+        // 初始化默认语言
+        $rootScope.language = GetLanguage();
+
+        // 初始化登陆状态
+        $rootScope.user = {
+            logined : false
+        };
+        window.FB && window.FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
                 $rootScope.user['logined'] = true;
-                $rootScope.user['authority'] = userAuthority;
-                $rootScope.user['username'] = userName;
-                $rootScope.user['token'] = userToken;
-            }else {
-                $rootScope.user['logined'] = false;
+            }
+        });
+
+        // 语言更换
+        $rootScope.$on('languageChange', function (e, data) {
+            if(data && data.newLanguage) {
+                $rootScope.language = GetLanguage(data.newLanguage);
             }
         });
 
         // 切换页面时权限认证
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
-
-            // 页面初始化时初始化用户属性
-            $rootScope.$emit('initUserProperty');
-
-            $('.tooltip').remove(':not(.common)');
-
             var nextUrl = next && next.originalPath;
             var currentUrl = current && current.originalPath;
             console.log('当前页：' + currentUrl + ', 下一页：' + nextUrl);
@@ -50,33 +57,14 @@ oasgames.mdataApp.run([
                     $location.path('/login');
                 }
 
-            // 访问登陆页面，如果已登录，则重定向
+            // 如果已登录访问登陆页面，则重定向到分享页
             }else if(nextUrl === '/login' || nextUrl === '/' || nextUrl === undefined){
+                $location.path('/share');
 
-                // 超级管理员跳转到app管理
-                if($rootScope.user.authority == AUTHORITY.administrators) {
-                    $location.path('/application/manage');
-
-                // 其他跳转到report管理
-                }else {
-                    $location.path('/report/manage');
-                }
-
-            // 访问其它页，如果已登录，需进行权限效验
+            // 访问其它页，如果已登录，则重定向到分享页
             }else {
-
-                // 访问页面权限效验
-                var license = UserAuth.route(nextUrl);
-
-                // 权限不足
-                if(!license) {
-                    console.log('不通过');
-                    $location.path(currentUrl);
-                }
-                $log.debug("访问权限验证：" + license);
+                $location.path('/share');
             }
-
         });
     }
 ]);
-

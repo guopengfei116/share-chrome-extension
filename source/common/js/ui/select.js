@@ -9,7 +9,7 @@ var Select = function (options) {
         trigger : 'body',
         content : '.select_content',
         triggerEvent : 'click',
-        offset : 10
+        offset : 1
     };
 
     $.extend(this._o, options);
