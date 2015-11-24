@@ -35,6 +35,7 @@
     top: 50%;
     margin-left: (-$width - $padding-left - $padding-right - $borderWidth * 2) / 2 - $offsetX;
     margin-top: (-$height - $padding-top - $padding-bottom - $borderWidth * 2) / 2 - $offsetY;
+    padding: $padding-top $padding-right $padding-bottom $padding-left;
     width: $width;
     height: $height;
     border:$borderWidth solid $borderColor;

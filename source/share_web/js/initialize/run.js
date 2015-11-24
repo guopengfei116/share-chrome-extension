@@ -21,7 +21,7 @@ niceShare.ShareApp.run([
         };
 
         // 初始化默认语言
-        $rootScope.language = GetLanguage();
+        $rootScope.language = GetLanguage(localStorage.getItem('language'));
 
         // 初始化登陆状态
         $rootScope.user = {
@@ -36,6 +36,7 @@ niceShare.ShareApp.run([
         // 语言更换
         $rootScope.$on('languageChange', function (e, data) {
             if(data && data.newLanguage) {
+                localStorage.setItem('language', data.newLanguage);
                 $rootScope.language = GetLanguage(data.newLanguage);
             }
         });

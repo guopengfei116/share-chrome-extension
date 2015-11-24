@@ -12,7 +12,7 @@
             </div>
             <div class="hint">
                 <i class="icon icon-logo_16"></i>
-                <span class="hint_words">Message for facebook</span>
+                <span class="hint_words">{{ language.shareToFacebook }}</span>
                 <span class="hint_font">150</span>
             </div>
             <div class="input">
@@ -20,22 +20,22 @@
             </div>
             <div class="media">
                 <img src="" />
-                <p></p>
+                <p class="media_link">www.nice_share.co</p>
             </div>
             <div class="upload">
-                <p class="upload_hint">Share up to 1 images</p>
+                <p class="upload_hint">{{ language.photoWarning.UploadRestriction }}</p>
                 <ul class="cf">
                     <li class="upload_imgs">
-                        <img src="/img/loading.gif" />
+                        <img src="/share_web/img/loading.gif" />
                     </li>
                 </ul>
             </div>
             <div class="operation">
                 <div class="operation_upload">
                     <a class="icon icon-add_photo"></a>
-                    <span class="operation_upload_hint">Creat an image</span>
+                    <span class="operation_upload_hint">{{ language.addPhoto }}</span>
                 </div>
-                <button class="operation_share"></button>
+                <button class="operation_share">{{ language.share }}</button>
             </div>
         </li>
     </ul>

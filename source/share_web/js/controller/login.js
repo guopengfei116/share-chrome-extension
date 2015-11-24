@@ -26,7 +26,6 @@ niceShare.Controller.controller('loginCtrl', [
 
         // 语言切换
         $scope.languageChange = function (language) {
-            localStorage.setItem('language', language);
             $rootScope.$broadcast('languageChange', {
                 newLanguage :  language
             });

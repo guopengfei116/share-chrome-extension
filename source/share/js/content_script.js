@@ -18,8 +18,6 @@ $(function () {
         } else {
 
         }
-
-        console.log(arguments);
     });
 
     /*
