@@ -10,12 +10,11 @@
     },
     "browser_action": {
         "default_title" : "share",
-        "default_icon" : "img/icon_16.png",
-        "default_popup" : "tpl/popup.html"
+        "default_icon" : "img/icon_16.png"
     },
     //"options_page" : "options.html",
     "background" : {
-        "page": "tpl/background.html"
+        "scripts": ["js/background.js"]
     },
     "content_scripts" : [
         {

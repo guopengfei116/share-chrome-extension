@@ -8,7 +8,7 @@ $(function () {
     * 监听插件事件
     * */
     chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
-
+console.log(request);
         var id = sender.id;
 
         if (request.greeting && request.greeting == 'login') {
@@ -19,6 +19,11 @@ $(function () {
 
         }
     });
+
+/*    chrome.extension.onMessage.addListener(function (data) {
+        console.log(data);
+        return 7758521;
+    });*/
 
     /*
     * 监听iframe事件
