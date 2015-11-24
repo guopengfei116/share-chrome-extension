@@ -6,12 +6,31 @@ niceShare.Controller.controller('loginCtrl', [
 
         // 登陆
         $scope.login = function (type) {
+
             switch (type) {
                 case 'facebook' :
-                    console.log(1);
+                    var facebookLogin = function () {
+                        FB.getLoginStatus(function(response) {
+                            console.log(response);
+                            if (response.status === 'connected') {
+                                console.log('Logged in.');
+                            }
+                            else {
+                                console.log('Logged out.');
+                                FB.login();
+                            }
+                        });
+                    };
+
+                    FB.login();
+                    if(FB) {
+                        facebookLogin();
+                    }else {
+                        setTimeout(facebookLogin, 2000);
+                    }
                     break;
                 case 'google+' :
-                    console.log(2);
+                    console.log('google+');
                     break;
             }
         };
