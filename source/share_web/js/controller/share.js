@@ -5,6 +5,12 @@ niceShare.Controller.controller('shareCtrl', [
     '$scope',
     function ($scope) {
 
+        $scope.status = {
+            photoUpload : true,
+            photoFormatError : false,
+            shareSuccess : false
+        };
+
         // 关闭按钮
         $scope.cancel = function () {
             top.postMessage(JSON.stringify({ iframe : 'off' }), "*");
@@ -13,10 +19,20 @@ niceShare.Controller.controller('shareCtrl', [
         // 分享按钮
         $scope.share = function (type) {
             if(!$scope.feed.message) {
-                Ui.alert('what would you like to share?');
+                $scope.status.photoFormatError = true;
+                setTimeout(function () {
+                    $scope.$apply(function () {
+                        $scope.status.photoFormatError = false;
+                    });
+                }, 1000);
                 return;
             }else if($scope.feed.message.length > 150) {
-                Ui.alert('max 150!');
+                $scope.status.photoFormatError = true;
+                setTimeout(function () {
+                    $scope.$apply(function () {
+                        $scope.status.photoFormatError = false;
+                    });
+                }, 1000);
                 return;
             }
 

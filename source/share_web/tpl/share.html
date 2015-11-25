@@ -1,4 +1,4 @@
-<article class="share">
+<article class="share" ng-class="{ 'share-uploading' : status.photoUpload }">
     <a class="cancel_circle" ng-click="cancel()">
         <i class="icon icon-cancel"></i>
     </a>
@@ -25,15 +25,15 @@
                     <p><a href="{{ feed.link }}" target="_blank">{{ feed.link }}</a></p>
                 </div>
             </div>
-            <div class="upload">
+            <div class="upload" ng-show="status.photoUpload">
                 <p class="upload_hint">{{ language.photoWarning.UploadRestriction }}</p>
                 <ul class="cf">
                     <li class="upload_imgs">
-                        <img src="/share_web/img/loading.gif" />
+                        <img src="{{ feed.picture }}" />
                     </li>
                 </ul>
             </div>
-            <div class="operation">
+            <div class="operation cf">
                 <div class="operation_upload">
                     <a class="icon icon-add_photo"></a>
                     <span class="operation_upload_hint">{{ language.addPhoto }}</span>
@@ -42,7 +42,10 @@
             </div>
         </li>
     </ul>
-    <aside class="error">
-
+    <aside class="share_error" ng-show="status.photoFormatError">
+        {{ language.photoWarning.photoFormat }}
+    </aside>
+    <aside class="share_seccess" ng-show="status.shareSuccess">
+        shareSuccess
     </aside>
 </article>

@@ -24,7 +24,7 @@ niceShare.ShareApp.run([
 
         // 初始化登陆状态
         $rootScope.user = {
-            logined : false
+            logined : true
         };
         console.log(window.FB);
         window.FB && window.FB.getLoginStatus(function(response) {
