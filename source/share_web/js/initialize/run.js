@@ -14,7 +14,6 @@ niceShare.ShareApp.run([
         * 初始化Ui
         * */
         window.onload = function () {
-            console.log('window onload');
             $('.loading').remove();
             var ui = new Ui();
             ui.init();
@@ -27,7 +26,9 @@ niceShare.ShareApp.run([
         $rootScope.user = {
             logined : false
         };
+        console.log(window.FB);
         window.FB && window.FB.getLoginStatus(function(response) {
+            console.log(response);
             if (response.status === 'connected') {
                 $rootScope.user['logined'] = true;
             }

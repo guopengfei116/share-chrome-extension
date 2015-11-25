@@ -34,6 +34,7 @@
         padding-top: 30px;
         height: 50px;
         img {
+          @include radius(50%);
           width: 50px;
           height: 50px;
         }
@@ -82,9 +83,9 @@
           width: 138px;
           height: 92px;
         }
-        &_link {
+        &_info {
           padding: 0 20px;
-          line-height: 16px;
+          line-height: 20px;
           font-size: 10px;
           color: #cacaca;
         }
@@ -133,6 +134,12 @@
           text-align: center;
           font-size: 12px;
           color: #fff;
+          &:hover {
+            background-color: #ee6459;
+          }
+          &:active {
+            background-color: #c12f23;
+          }
         }
       }
     }

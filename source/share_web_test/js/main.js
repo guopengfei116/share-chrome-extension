@@ -6,7 +6,7 @@ window.fbAsyncInit = function() {
     FB.init({
         // 春争 FBDesktop  548875461811953
         // 郭鹏飞 share  1652508341698746
-        appId      : '1652508341698746',
+        appId      : '686189861434770',
         //1652508341698746
         cookie     : true,
         status     : true,
@@ -75,7 +75,7 @@ window.fbAsyncInit = function() {
         });
 
         $('#login').on('click', function () {
-            getLoginStatus();
+            /*getLoginStatus();
 
             FB.api('/me', {
                 "fields": "id, name, picture"
@@ -87,7 +87,7 @@ window.fbAsyncInit = function() {
 
             FB.getAuthResponse(function () {
                console.log(arguments);
-            });
+            });*/
 
             FB.login(function(response){
                 if (response && response.authResponse) {
@@ -102,7 +102,14 @@ window.fbAsyncInit = function() {
                     console.log('User cancelled login or did not fully authorize.');
                 }
                 console.log('login');
-                console.log(arguments);
+                console.log(response);
+            }, {
+                return_scopes: true,
+                enable_profile_selector : true
+            });
+
+            FB.getAuthResponse(function (response) {
+                console.log(response);
             });
 
 

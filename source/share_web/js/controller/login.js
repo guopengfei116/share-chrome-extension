@@ -1,7 +1,11 @@
+/*
+ * 登陆页控制器
+ * */
 niceShare.Controller.controller('loginCtrl', [
     '$rootScope',
     '$scope',
-    function ($rootScope, $scope) {
+    '$location',
+    function ($rootScope, $scope, $location) {
         var cookie = require('Cookie');
 
         // 登陆
@@ -10,19 +14,20 @@ niceShare.Controller.controller('loginCtrl', [
             switch (type) {
                 case 'facebook' :
                     var facebookLogin = function () {
-                        FB.getLoginStatus(function(response) {
+                        FB.login(function (response) {
                             console.log(response);
                             if (response.status === 'connected') {
                                 console.log('Logged in.');
+                                $scope.$apply(function () {
+                                    $rootScope.user['logined'] = true;
+                                    $location.path('/share');
+                                });
                             }
                             else {
                                 console.log('Logged out.');
-                                FB.login();
                             }
-                        });
+                        }, {scope : 'public_profile'});
                     };
-
-                    FB.login();
                     if(FB) {
                         facebookLogin();
                     }else {
@@ -37,10 +42,7 @@ niceShare.Controller.controller('loginCtrl', [
 
         // 关闭按钮
         $scope.cancel = function () {
-            var data = {
-                iframe : false
-            };
-            top.postMessage(data, "*");
+            top.postMessage(JSON.stringify({ iframe : 'off' }), "*");
         };
 
         // 语言切换
