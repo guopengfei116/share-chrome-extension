@@ -35,10 +35,10 @@
             </div>
             <div class="operation cf">
                 <div class="operation_upload">
-                    <div class="operation_upload_component">
-                        <a class="icon icon-add_photo"></a>
-                        <input id="photo_upload_input" name="new_photo" type="image" />
-                    </div>
+                    <span class="operation_upload_component" >
+                        <span class="icon icon-add_photo"></span>
+                        <input id="photo_upload_input" name="new_photo" type="file" />
+                    </span>
                     <span class="operation_upload_hint">{{ language.addPhoto }}</span>
                 </div>
                 <button class="operation_share" ng-click="share('facebook')">{{ language.share }}</button>

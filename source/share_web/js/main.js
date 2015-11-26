@@ -9,6 +9,8 @@ window.$ = require('./lib/jquery.min.js');
 require('./lib/angular.js');
 require('./lib/angular-route.min.js');
 require('./lib/angular-sanitize.min.js');
+require('./lib/ga.js');
+require('./lib/mdata.js');
 
 /*
  * 公共

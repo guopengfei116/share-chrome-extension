@@ -16,6 +16,12 @@ niceShare.Controller.controller('shareCtrl', [
             top.postMessage(JSON.stringify({ iframe : 'off' }), "*");
         };
 
+        // 上传图片按钮
+        $scope.upload = function () {
+            console.log(this);
+            //$('#photo_upload_input').trigger('click');
+        };
+
         // 分享按钮
         $scope.share = function (type) {
             if(!$scope.feed.message) {
