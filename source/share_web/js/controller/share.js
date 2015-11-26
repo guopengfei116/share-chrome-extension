@@ -53,6 +53,8 @@ niceShare.Controller.controller('shareCtrl', [
                     console.log('google+');
                     break;
             }
+            // 上报分享操作
+            report.infinite('share_clikc');
         };
 
         /*

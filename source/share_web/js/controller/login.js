@@ -8,9 +8,8 @@ niceShare.Controller.controller('loginCtrl', [
     function ($rootScope, $scope, $location) {
         var cookie = require('Cookie');
 
-        // 登陆
+        // 授权登陆
         $scope.login = function (type) {
-
             switch (type) {
                 case 'facebook' :
                     var facebookLogin = function () {
@@ -38,6 +37,8 @@ niceShare.Controller.controller('loginCtrl', [
                     console.log('google+');
                     break;
             }
+            // 上报授权登陆
+            report.infinite('button_click');
         };
 
         // 关闭按钮
@@ -50,6 +51,8 @@ niceShare.Controller.controller('loginCtrl', [
             $rootScope.$broadcast('languageChange', {
                 newLanguage :  language
             });
+            // 上报语言切换操作
+            report.infinite('edit');
         };
     }
 ]);

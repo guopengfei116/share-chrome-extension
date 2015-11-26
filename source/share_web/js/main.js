@@ -16,6 +16,7 @@ require('./lib/angular-sanitize.min.js');
 require('common');
 window.Ui = require('Ui');
 window.authentication = new (require('Authentication'));
+window.report = require('./util/report.js');
 
 /*
  * 加载常量
