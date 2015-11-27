@@ -53,6 +53,13 @@ niceShare.Controller.controller('shareCtrl', [
                     * */
                     uploadImg(file, function (result) {
                         console.log(result);
+                        if(typeof result == 'string') {
+                            try {
+                                result = JSON.parse(result);
+                            }catch (e) {
+                                result = null;
+                            }
+                        }
                         if(result && result.data) {
                             var imgBase64 = event.target.result;
                             $('#media-picture').attr('src', imgBase64);
