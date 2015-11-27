@@ -16,10 +16,10 @@
                 <span class="hint_font">150</span>
             </div>
             <div class="input">
-                <textarea placeholder="what would you like to share?" ng-model="feed.message"></textarea>
+                <textarea id="message-textarea" placeholder="what would you like to share?" ng-model="feed.message"></textarea>
             </div>
             <div class="media">
-                <img src="{{ feed.picture }}" />
+                <img id="media-picture" src="{{ feed.picture }}" />
                 <div class="media_info">
                     <p>{{ feed.title }}</p>
                     <p><a href="{{ feed.link }}" target="_blank">{{ feed.link }}</a></p>
@@ -29,7 +29,7 @@
                 <p class="upload_hint">{{ language.photoWarning.UploadRestriction }}</p>
                 <ul class="cf">
                     <li class="upload_imgs">
-                        <img src="{{ feed.picture }}" />
+                        <img id="upload-picture" src="{{ feed.picture }}" />
                     </li>
                 </ul>
             </div>
@@ -48,7 +48,7 @@
     <aside class="share_error" ng-show="status.photoFormatError">
         {{ language.photoWarning.photoFormat }}
     </aside>
-    <aside class="share_seccess" ng-show="status.shareSuccess">
+    <aside class="share_success" ng-show="status.shareSuccess">
         shareSuccess
     </aside>
 </article>

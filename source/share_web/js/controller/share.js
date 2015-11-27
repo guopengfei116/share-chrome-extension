@@ -3,10 +3,13 @@
 * */
 niceShare.Controller.controller('shareCtrl', [
     '$scope',
-    function ($scope) {
+    '$timeout',
+    'UPLOAD_PHOTO_INTERFACE',
+    function ($scope, $timeout, UPLOAD_PHOTO_INTERFACE) {
 
+        // 初始化显示状态
         $scope.status = {
-            photoUpload : true,
+            photoUpload : false,
             photoFormatError : false,
             shareSuccess : false
         };
@@ -16,41 +19,107 @@ niceShare.Controller.controller('shareCtrl', [
             top.postMessage(JSON.stringify({ iframe : 'off' }), "*");
         };
 
-        // 上传图片
+        /*
+        * 图片上传
+        * */
+        function uploadImg (file) {
+            var uploadImg = new UploadFile({
+                file : file,
+                onComplete : function(ret){
+                    console.log('Complete',ret);
+                },
+                onError : function(ret){
+                    console.log('erroe',ret)
+                },
+                interfaceUrl : UPLOAD_PHOTO_INTERFACE.URL,
+                uploadName : UPLOAD_PHOTO_INTERFACE.NAME
+            });
+            uploadImg.run();
+        }
+
+        /*
+        * @Listener   file表单change
+        * @*          格式效验，回显
+        * */
         $('#photo_upload_input').change(function (event) {
             var file = this.files[0];
+            var reader = new FileReader();
+            // 文件读取
+            reader.onload = function(event){
+                if(file.type.indexOf('image') != -1 || 0){
+                    // 上传
+                    uploadImg(file);
+                    // 回显
+                    var imgBase64 = event.target.result;
+                    $('#media-picture').attr('src', imgBase64);
+                    $('#upload-picture').attr('src', imgBase64);
+                    return;
+                }else{
+                    // 图片类型错误提示
+                    $scope.$apply(function () {
+                        $scope.status.photoFormatError = true;
+                    });
+                    setTimeout(function () {
+                        $scope.$apply(function () {
+                            $scope.status.photoFormatError = false;
+                        });
+                    }, 1000);
+                }
+            };
+            reader.readAsDataURL(file);
         });
+
+        // 输入框错误提示
+        var blink = (function () {
+            var number, blinkTimer, $textarea = $('#message-textarea');
+            return function (cbk) {
+                number = 0;
+                clearInterval(blinkTimer);
+                blinkTimer = setInterval(function (){
+                    if(number > 6){
+                        clearInterval(blinkTimer);
+                        $textarea.removeClass('textarea-warning');
+                        cbk && cbk();
+                    }else if(number % 2 === 0){
+                        $textarea.addClass('textarea-warning');
+                    }else {
+                        $textarea.removeClass('textarea-warning');
+                    }
+                    number++;
+                }, 50);
+            };
+        })();
 
         // 分享按钮
         $scope.share = function (type) {
-            if(!$scope.feed.message) {
-                $scope.status.photoFormatError = true;
-                setTimeout(function () {
-                    $scope.$apply(function () {
-                        $scope.status.photoFormatError = false;
-                    });
-                }, 1000);
-                return;
-            }else if($scope.feed.message.length > 150) {
-                $scope.status.photoFormatError = true;
-                setTimeout(function () {
-                    $scope.$apply(function () {
-                        $scope.status.photoFormatError = false;
-                    });
-                }, 1000);
+
+            // message效验
+            if(!/^.{1,150}$/.test($scope.feed.message || '')) {
+                blink();
                 return;
             }
 
+            // 发送分享到第三方应用
             switch (type) {
                 case 'facebook' :
+                    console.log('facebook接口');
                     FB.api('/me/feed', 'POST', {
                         message : $scope.feed.message,
                         link : $scope.feed.link,
-                        description : $scope.feed.title,
-                        picture : $scope.feed.picture
+                        picture : $scope.feed.picture,
+                        name : $scope.feed.title.split(' ')[0],
+                        description : $scope.feed.title
+                        //caption : $scope.feed.title,
                     }, function (response) {
-                        if(response.error) {
-                            alert(Ui.alert(response.error));
+                        console.log(response);
+                        console.log(response.id);
+                        if(response && response.id) {
+                            $scope.$apply(function () {
+                                $scope.status.shareSuccess = true;
+                                $timeout(function () {
+                                    $scope.status.shareSuccess = false;
+                                }, 1000);
+                            });
                         }
                     });
                     break;

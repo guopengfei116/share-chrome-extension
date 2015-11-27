@@ -19,11 +19,13 @@ require('common');
 window.Ui = require('Ui');
 window.authentication = new (require('Authentication'));
 window.report = require('./util/report.js');
+window.UploadFile = require('./util/upload_file.js');
 
 /*
  * 加载常量
  * */
 niceShare.Constant = angular.module('Constant', []);
+require('./constant/interface.js');
 require('./constant/language_optional.js');
 require('./constant/language_package.js');
 

@@ -1,6 +1,8 @@
 /*
-* 上报对象
-* */
+ * @Class   上报
+ * @*       mdata 和 GA
+ * @return  Report
+ * */
 (function () {
     var root = this;
 
@@ -102,10 +104,6 @@
         }
     };
 
-    /*
-     * @method 上报mdata 和 GA
-     * @param {String} eventName 事件名称
-     * */
     if(typeof exports !== 'undefined') {
         if(typeof module !== 'undefined' && module.exports) {
             exports = module.exports = Report;

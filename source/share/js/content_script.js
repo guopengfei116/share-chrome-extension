@@ -73,7 +73,7 @@ $(function () {
                 if(/^.*\.(jpg|jpeg|gif|png){1}(\?.*)?$/.test(this.src) && !data.picture) {
                     var width = this.width;
                     var height = this.height;
-                    if(width * height > 300) {
+                    if(width * height > 5000) {
                         data.picture = this.src;
                         return false;
                     }

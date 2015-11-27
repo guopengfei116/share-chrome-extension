@@ -24,15 +24,19 @@ niceShare.ShareApp.run([
 
         // 初始化登陆状态
         $rootScope.user = {
-            logined : true
+            logined : false
         };
-        console.log(window.FB);
-        window.FB && window.FB.getLoginStatus(function(response) {
-            console.log(response);
-            if (response.status === 'connected') {
-                $rootScope.user['logined'] = true;
-            }
-        });
+        if(typeof FB !== 'undefined') {
+            FB.getLoginStatus(function(response) {
+                console.log('获取FB登陆状态');
+                console.log(response);
+                if (response.status === 'connected') {
+                    $rootScope.user['logined'] = true;
+                }
+            });
+        }else {
+            console.log('FB未成功初始化');
+        }
 
         // 语言更换
         $rootScope.$on('languageChange', function (e, data) {
