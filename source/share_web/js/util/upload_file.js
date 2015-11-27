@@ -36,16 +36,32 @@
 
     $.extend(UploadFile.prototype, {
         run : function () {
+            var self = this;
             var xhr = new XMLHttpRequest();
             var form = new FormData();
 
             // form添加数据
-            form.append(this.options.uploadName, this.options.file);
+            form.append(self.options.uploadName, self.options.file);
 
             //绑定上传进度事件
-            if(xhr.upload && typeof this.options.onProgress == 'function'){
-                this.progress(xhr);
+            if(xhr.upload && typeof self.options.onProgress == 'function'){
+                self.progress(xhr);
             }
+
+            // 文件上传成功或是失败
+            xhr.onreadystatechange = function(e) {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        if(typeof self.options.onComplete == 'function') {
+                            self.options.onComplete(xhr.responseText);
+                        }
+                    } else {
+                        if(typeof self.options.onError == 'function') {
+                            self.options.onError(xhr);
+                        }
+                    }
+                }
+            };
 
             // 开始上传
             xhr.open("POST", this.options.interfaceUrl, true);

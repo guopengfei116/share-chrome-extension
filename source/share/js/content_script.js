@@ -31,8 +31,16 @@ $(function () {
              * 创建添加iframe
              * */
             var $iframe = $('<iframe id="nice-share-iframe-page"></iframe>');
-            $iframe.attr('src', 'niceshare.goextension.com:9800/share_web')
+            var onlineUrl = 'http://niceshare.goextension.com';
+            var testUrl = onlineUrl + ':9800/share_web';
+            $iframe.attr('src', testUrl)
                 .css({position : "fixed", left : 0, top : 0, right : 0, bottom : 0, 'z-index' : 8888, 'width' : '100%', 'height' : '100%'});
+            $iframe.load(function () {
+                console.log('iframe加载成功');
+            });
+            $iframe.error(function () {
+                console.log('iframe onerror');
+            });
             $iframe.appendTo('body');
         }
 

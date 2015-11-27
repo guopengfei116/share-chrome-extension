@@ -22,12 +22,10 @@ niceShare.Controller.controller('shareCtrl', [
         /*
         * 图片上传
         * */
-        function uploadImg (file) {
+        function uploadImg (file, cb) {
             var uploadImg = new UploadFile({
                 file : file,
-                onComplete : function(ret){
-                    console.log('Complete',ret);
-                },
+                onComplete : cb,
                 onError : function(ret){
                     console.log('erroe',ret)
                 },
@@ -48,7 +46,14 @@ niceShare.Controller.controller('shareCtrl', [
             reader.onload = function(event){
                 if(file.type.indexOf('image') != -1 || 0){
                     // 上传
-                    uploadImg(file);
+                    uploadImg(file, function (result) {
+                        console.log(result);
+                        if(result && result.data) {
+                            $scope.feed.picture = result.data.pic;
+                        }else {
+                            console.log('图片上传失败！');
+                        }
+                    });
                     // 回显
                     var imgBase64 = event.target.result;
                     $('#media-picture').attr('src', imgBase64);
