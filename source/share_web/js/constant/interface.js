@@ -1,4 +1,4 @@
 niceShare.Constant.constant('UPLOAD_PHOTO_INTERFACE', {
-    URL : '/uploadfile',
+    URL : '/uploadfile.php',
     NAME : 'pic'
 });

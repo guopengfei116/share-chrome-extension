@@ -25,12 +25,12 @@ niceShare.Controller.controller('shareCtrl', [
         function uploadImg (file, cb) {
             var uploadImg = new UploadFile({
                 file : file,
+                uploadName : UPLOAD_PHOTO_INTERFACE.NAME,
+                interfaceUrl : UPLOAD_PHOTO_INTERFACE.URL,
                 onComplete : cb,
                 onError : function(ret){
-                    console.log('erroe',ret)
-                },
-                interfaceUrl : UPLOAD_PHOTO_INTERFACE.URL,
-                uploadName : UPLOAD_PHOTO_INTERFACE.NAME
+                    console.log('erroe');
+                }
             });
             uploadImg.run();
         }
@@ -42,23 +42,26 @@ niceShare.Controller.controller('shareCtrl', [
         $('#photo_upload_input').change(function (event) {
             var file = this.files[0];
             var reader = new FileReader();
+
             // 文件读取
             reader.onload = function(event){
+
                 if(file.type.indexOf('image') != -1 || 0){
-                    // 上传
+                    /*
+                    * 上传文件
+                    * 回调回显
+                    * */
                     uploadImg(file, function (result) {
                         console.log(result);
                         if(result && result.data) {
+                            var imgBase64 = event.target.result;
+                            $('#media-picture').attr('src', imgBase64);
+                            $('#upload-picture').attr('src', imgBase64);
                             $scope.feed.picture = result.data.pic;
                         }else {
                             console.log('图片上传失败！');
                         }
                     });
-                    // 回显
-                    var imgBase64 = event.target.result;
-                    $('#media-picture').attr('src', imgBase64);
-                    $('#upload-picture').attr('src', imgBase64);
-                    return;
                 }else{
                     // 图片类型错误提示
                     $scope.$apply(function () {
@@ -112,8 +115,8 @@ niceShare.Controller.controller('shareCtrl', [
                         message : $scope.feed.message,
                         link : $scope.feed.link,
                         picture : $scope.feed.picture,
-                        name : $scope.feed.title.split(' ')[0],
-                        description : $scope.feed.title
+                        name : $scope.feed.title,
+                        description : $scope.feed.description || $scope.feed.link
                         //caption : $scope.feed.title,
                     }, function (response) {
                         console.log(response);
