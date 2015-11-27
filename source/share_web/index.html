@@ -24,12 +24,17 @@
                     // 郭鹏飞 share  1652508341698746  niceshare  1528055907507738
                     appId: '686189861434770',
                     cookie: true,
-                    status: true,
-                    oauth: true,
-                    status: true,
+                    //status: true,
+                    //oauth: true,
                     xfbml: true,
                     version: 'v2.5'
                 });
+                // 创建
+                var evt = document.createEvent("HTMLEvents");
+                // 初始化
+                evt.initEvent("facebookLoad", false, false);
+                // 触发, 即弹出文字
+                document.dispatchEvent(evt);
             };
 
             (function(d, s, id){

@@ -27,16 +27,32 @@ niceShare.ShareApp.run([
             logined : false
         };
         if(typeof FB !== 'undefined') {
-            FB.getLoginStatus(function(response) {
-                console.log('获取FB登陆状态');
-                console.log(response);
-                if (response.status === 'connected') {
-                    $rootScope.user['logined'] = true;
-                }
-            });
+            var fbAuthResponse = FB.getAuthResponse();
+            if(fbAuthResponse && fbAuthResponse.userID) {
+                $rootScope.user['logined'] = true;
+            }
         }else {
             console.log('FB未成功初始化');
         }
+
+        /*
+        * facebookSDK初始化完成后触发
+        * */
+        $(document).on('facebookLoad', function (event) {
+            setTimeout(function () {
+                FB.getLoginStatus(function (e) {
+                    if(e.status === 'connected') {
+                        $rootScope.$apply(function () {
+                            $rootScope.user['logined'] = true;
+                            $location.path('/share');
+                        });
+                    }else {
+                        console.log('facebook未登录');
+                    }
+                });
+                console.log(FB.getAuthResponse());
+            }, 2000);
+        });
 
         // 语言更换
         $rootScope.$on('languageChange', function (e, data) {

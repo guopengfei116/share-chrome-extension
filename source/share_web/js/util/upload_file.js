@@ -48,7 +48,7 @@
             }
 
             // 开始上传
-            xhr.open("POST", this.options.url, true);
+            xhr.open("POST", this.options.interfaceUrl, true);
             xhr.send(form);
             this.time = new Date().getTime();
             this.fastInterCode();
