@@ -88,13 +88,31 @@
         padding-left: 168px;
         padding-right: 30px;
         height: 92px;
-        img {
+        @include radius();
+        & > img {
           position: absolute;
           left: 30px;
           top: 0;
-          @include radius();
           width: 138px;
           height: 92px;
+          @include radius();
+        }
+        &_upload-loading {
+          position: absolute;
+          left: 30px;
+          top: 0;
+          width: 138px;
+          height: 92px;
+          line-height: 92px;
+          border: 1px solid #cdcdcd;
+          @include radius();
+          background-color : #fff;
+          @include opacity(0.6);
+          text-align: center;
+          img {
+            width: 16px;
+            height: 16px;
+          }
         }
         &_info {
           padding: 0 20px;

@@ -4,8 +4,11 @@
 * */
 $(function () {
 
+    // iframe加载状态
+    var iframeLoad = false;
+
     /*
-    * 监听插件事件
+    * 与插件通信
     * */
     //chrome.extension.onMessage.addListener(function (data) {
     chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
@@ -15,41 +18,46 @@ $(function () {
          * */
         function loadShare () {
 
-            // 已存在iframe开关
             var $hiddenNiceShareIframePage = $('#nice-share-iframe-page' + ':hidden');
             var $visibleNiceShareIframePage = $('#nice-share-iframe-page' + ':visible');
+            var $framePage = $('#nice-share-iframe-page');
 
-            if ($hiddenNiceShareIframePage.length) {
+            // iframe已成功加载并为隐藏状态，则显示iframe，return
+            if ($hiddenNiceShareIframePage.length && iframeLoad) {
                 $hiddenNiceShareIframePage.show();
                 return;
+
+            // 如果iframe为显示状态，无论是否成功加载，都隐藏它，return
             }else if ($visibleNiceShareIframePage.length) {
                 $visibleNiceShareIframePage.hide();
                 return;
             }
 
-            /*
-             * 创建添加iframe
-             * */
-            var $iframe = $('<iframe id="nice-share-iframe-page"></iframe>');
-            var onlineUrl = 'http://niceshare.goextension.com';
-            var testUrl = onlineUrl + ':9800/share_web';
+            // 如果iframe不存在 或 未成功加载，则重建iframe
+            else {
+                $framePage.remove();
+                var $iframe = $('<iframe id="nice-share-iframe-page"></iframe>');
+                var onlineUrl = 'http://niceshare.goextension.com';
+                var testUrl = onlineUrl + ':9800/share_web';
 
-            // 设置iframe地址
-            $iframe.attr('src', onlineUrl)
-                .css({position : "fixed", left : 0, top : 0, right : 0, bottom : 0, 'z-index' : 8888, 'width' : '100%', 'height' : '100%'});
+                // 设置iframe地址
+                $iframe.attr('src', testUrl)
+                    .css({position : "fixed", left : 0, top : 0, right : 0, bottom : 0, 'z-index' : 8888, 'width' : '100%', 'height' : '100%'});
 
-            $iframe.load(function () {
-                console.log('iframe加载成功');
-            });
-            $iframe.error(function () {
-                console.log('iframe onerror');
-            });
+                $iframe.load(function () {
+                    console.log('iframe加载成功');
+                });
+                $iframe.error(function () {
+                    console.log('iframe onerror');
+                });
 
-            $iframe.appendTo('body');
+                $iframe.appendTo('body');
+            }
         }
 
         // 状态控制
         if (request.greeting && request.greeting == 'login') {
+            console.log('iframe 加载 ' + iframeLoad);
             loadShare();
         } else if (request.greeting && request.greeting == 'cancel') {
             $('#nice-share-iframe-page').hide();
@@ -109,6 +117,11 @@ $(function () {
             console.log(error);
         }
         console.log(data);
+
+        // iframe已正确加载
+        if(data.iframeLoad) {
+            iframeLoad = true;
+        }
 
         // 窗口显示隐藏
         if(data.iframe) {

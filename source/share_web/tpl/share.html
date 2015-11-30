@@ -20,6 +20,9 @@
             </div>
             <div class="media">
                 <img id="media-picture" src="{{ feed.picture }}" />
+                <div class="media_upload-loading" ng-show="status.photoUploading">
+                    <img src="/share_web/img/loading_upload.gif" />
+                </div>
                 <div class="media_info">
                     <p>{{ feed.title }}</p>
                     <p><a href="{{ feed.link }}" target="_blank">{{ feed.link }}</a></p>

@@ -10,6 +10,7 @@ niceShare.Controller.controller('shareCtrl', [
         // 初始化显示状态
         $scope.status = {
             photoUpload : false,
+            photoUploading : false,
             photoFormatError : false,
             shareSuccess : false
         };
@@ -22,14 +23,15 @@ niceShare.Controller.controller('shareCtrl', [
         /*
         * 图片上传
         * */
-        function uploadImg (file, cb) {
+        function uploadImg (file, cb1, cb2) {
             var uploadImg = new UploadFile({
                 file : file,
                 uploadName : UPLOAD_PHOTO_INTERFACE.NAME,
                 interfaceUrl : UPLOAD_PHOTO_INTERFACE.URL,
-                onComplete : cb,
+                onComplete : cb1,
                 onError : function(ret){
-                    console.log('erroe');
+                    cb2 && cb2(ret);
+                    console.log('图片上传网络错误');
                 }
             });
             uploadImg.run();
@@ -47,27 +49,38 @@ niceShare.Controller.controller('shareCtrl', [
             reader.onload = function(event){
 
                 if(file.type.indexOf('image') != -1 || 0){
+
                     /*
-                    * 上传文件
-                    * 回调回显
-                    * */
-                    uploadImg(file, function (result) {
-                        console.log(result);
-                        if(typeof result == 'string') {
-                            try {
-                                result = JSON.parse(result);
-                            }catch (e) {
-                                result = null;
+                     * 上传文件
+                     * 回调回显
+                     * */
+                    $scope.$apply(function () {
+                        $scope.status.photoUploading = true;
+                        uploadImg(file, function (result) {
+                            console.log(result);
+                            if(typeof result == 'string') {
+                                try {
+                                    result = JSON.parse(result);
+                                }catch (e) {
+                                    result = null;
+                                }
                             }
-                        }
-                        if(result && result.data) {
-                            var imgBase64 = event.target.result;
-                            $('#media-picture').attr('src', imgBase64);
-                            $('#upload-picture').attr('src', imgBase64);
-                            $scope.feed.picture = result.data.pic;
-                        }else {
-                            console.log('图片上传失败！');
-                        }
+                            if(result && result.data) {
+                                var imgBase64 = event.target.result;
+                                $('#media-picture').attr('src', imgBase64);
+                                $('#upload-picture').attr('src', imgBase64);
+                                $scope.feed.picture = result.data.pic;
+                            }else {
+                                console.log('图片上传失败！');
+                            }
+                            $scope.$apply(function () {
+                                $scope.status.photoUploading = false;
+                            });
+                        }, function () {
+                            $scope.$apply(function () {
+                                $scope.status.photoUploading = false;
+                            });
+                        });
                     });
                 }else{
                     // 图片类型错误提示

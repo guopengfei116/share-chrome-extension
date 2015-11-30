@@ -18,32 +18,44 @@ niceShare.ShareApp.run([
         };
 
         /*
-         * 添加facebookSDK初始化监听
-         * */
-        var facebookLoad = function () {
-            $(document).on('facebookLoad', function (event) {
-                setTimeout(function () {
-                    FB.getLoginStatus(function (e) {
-                        if(e.status === 'connected') {
-                            $rootScope.$apply(function () {
-                                $rootScope.user['logined'] = true;
-                                $location.path('/share');
-                            });
-                        }else {
-                            console.log('facebook未登录');
-                        }
-                    });
-                    console.log(FB.getAuthResponse());
-                }, 2000);
-            });
+        * 获取facebook登陆状态
+        * 直到facebook登陆成功为止
+        * */
+        var getFacebookTimer = null;
+        var facebookLoginStatus = function () {
+            clearTimeout(getFacebookTimer);
+            getFacebookTimer = setTimeout(function () {
+                FB.getLoginStatus(function (e) {
+                    if(e.status === 'connected') {
+                        console.log('facebook已登录');
+                        $rootScope.$apply(function () {
+                            $rootScope.user['logined'] = true;
+                            $location.path('/share');
+                        });
+                    }else {
+                        facebookLoginStatus();
+                        console.log('facebook未登录');
+                    }
+                });
+                console.log(FB.getAuthResponse());
+            }, 2000);
         };
 
         /*
-         * 删除loading
-         * 初始化Ui
+         * 添加facebookSDK初始化监听
+         * */
+        $(document).on('facebookLoad', function (event) {
+            console.log('FB load');
+            facebookLoginStatus();
+        });
+
+        /*
+         * 通知插件iframe已成功加载
+         * 初始化页面
          * 判断登陆状态
          * */
         window.onload = function () {
+            top.postMessage(JSON.stringify({ iframeLoad : true }), "*");
             $('.loading').remove();
             var ui = new Ui();
             ui.init();
@@ -52,9 +64,11 @@ niceShare.ShareApp.run([
                 var fbAuthResponse = FB.getAuthResponse();
                 if(fbAuthResponse && fbAuthResponse.userID) {
                     $rootScope.user['logined'] = true;
+                }else {
+                    facebookLoginStatus();
+                    console.log('FB已存在，未获取到用户token');
                 }
             }else {
-                facebookLoad();
                 console.log('FB未成功初始化, 添加监听');
             }
         };
