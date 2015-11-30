@@ -9,16 +9,6 @@ niceShare.ShareApp.run([
     'GetLanguage',
     function ($rootScope, $location, $log, GetLanguage) {
 
-        /*
-        * 删除loading
-        * 初始化Ui
-        * */
-        window.onload = function () {
-            $('.loading').remove();
-            var ui = new Ui();
-            ui.init();
-        };
-
         // 初始化默认语言
         $rootScope.language = GetLanguage(localStorage.getItem('language'));
 
@@ -26,33 +16,48 @@ niceShare.ShareApp.run([
         $rootScope.user = {
             logined : false
         };
-        if(typeof FB !== 'undefined') {
-            var fbAuthResponse = FB.getAuthResponse();
-            if(fbAuthResponse && fbAuthResponse.userID) {
-                $rootScope.user['logined'] = true;
-            }
-        }else {
-            console.log('FB未成功初始化');
-        }
 
         /*
-        * facebookSDK初始化完成后触发
-        * */
-        $(document).on('facebookLoad', function (event) {
-            setTimeout(function () {
-                FB.getLoginStatus(function (e) {
-                    if(e.status === 'connected') {
-                        $rootScope.$apply(function () {
-                            $rootScope.user['logined'] = true;
-                            $location.path('/share');
-                        });
-                    }else {
-                        console.log('facebook未登录');
-                    }
-                });
-                console.log(FB.getAuthResponse());
-            }, 2000);
-        });
+         * 添加facebookSDK初始化监听
+         * */
+        var facebookLoad = function () {
+            $(document).on('facebookLoad', function (event) {
+                setTimeout(function () {
+                    FB.getLoginStatus(function (e) {
+                        if(e.status === 'connected') {
+                            $rootScope.$apply(function () {
+                                $rootScope.user['logined'] = true;
+                                $location.path('/share');
+                            });
+                        }else {
+                            console.log('facebook未登录');
+                        }
+                    });
+                    console.log(FB.getAuthResponse());
+                }, 2000);
+            });
+        };
+
+        /*
+         * 删除loading
+         * 初始化Ui
+         * 判断登陆状态
+         * */
+        window.onload = function () {
+            $('.loading').remove();
+            var ui = new Ui();
+            ui.init();
+
+            if(typeof FB !== 'undefined') {
+                var fbAuthResponse = FB.getAuthResponse();
+                if(fbAuthResponse && fbAuthResponse.userID) {
+                    $rootScope.user['logined'] = true;
+                }
+            }else {
+                facebookLoad();
+                console.log('FB未成功初始化, 添加监听');
+            }
+        };
 
         // 语言更换
         $rootScope.$on('languageChange', function (e, data) {
