@@ -139,13 +139,12 @@ niceShare.Controller.controller('shareCtrl', [
                         description : $scope.feed.description || $scope.feed.link
                         //caption : $scope.feed.title,
                     }, function (response) {
-                        console.log(response);
-                        console.log(response.id);
                         if(response && response.id) {
                             $scope.$apply(function () {
                                 $scope.status.shareSuccess = true;
                                 $timeout(function () {
                                     $scope.status.shareSuccess = false;
+                                    $scope.cancel();
                                 }, 1000);
                             });
                         }
