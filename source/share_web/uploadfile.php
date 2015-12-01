@@ -15,7 +15,7 @@ $url = "";
 $uptype = explode(".", $_FILES["pic"]["name"]);
 $newname = md5($date . $uptype[0]) . "." . $uptype[1];
 $_FILES["pic"]["name"] = $newname;
-if (file_exists("pics/" . $_FILES["pic"]["name"])) {
+if (file_exists("pics/".date("Y-m-d").'/' . $_FILES["pic"]["name"])) {
     $code = 0;
     $msg = 'error';
 } else {
@@ -23,7 +23,16 @@ if (file_exists("pics/" . $_FILES["pic"]["name"])) {
         mkdir($_FILES["pic"]["tmp_name"], "pics/".date("Y-m-d"),0775);
     }
     $_FILES["pic"]["name"] = move_uploaded_file($_FILES["pic"]["tmp_name"], "pics/".date("Y-m-d").'/' . $_FILES["pic"]["name"]);
-    $picUrl = "http://niceshare_goextension.com/pics/".date("Y-m-d").'/' . $newname;
+    if(file_exists("pics/".date("Y-m-d").'/' . $_FILES["pic"]["name"])){
+        $picUrl = "http://niceshare.goextension.com/pics/".date("Y-m-d").'/' . $newname;
+        $code = 1;
+        $msg = 'success';
+        $data = ["status" => "success", "pic" => $picUrl];
+    }else{
+        $code = 0;
+        $msg = 'error';
+    }
+
     $code = 1;
     $msg = 'success';
     $data = ["status" => "success", "pic" => $picUrl];

@@ -25,7 +25,7 @@ niceShare.Controller.controller('loginCtrl', [
                             else {
                                 console.log('Logged out.');
                             }
-                        }, {scope : 'public_profile'});
+                        }, {scope : 'public_profile, publish_actions'});
                     };
                     if(FB) {
                         facebookLogin();

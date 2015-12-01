@@ -147,6 +147,13 @@ niceShare.Controller.controller('shareCtrl', [
                                     $scope.cancel();
                                 }, 1000);
                             });
+                        }else {
+                            /*$scope.$apply(function () {
+                                $scope.status.photoFormatError = true;
+                                $timeout(function () {
+                                    $scope.status.shareSuccess = false;
+                                }, 1000);
+                            });*/
                         }
                     });
                     break;
