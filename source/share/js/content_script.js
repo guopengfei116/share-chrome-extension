@@ -42,7 +42,7 @@ $(function () {
                 var testUrl = onlineUrl + ':9800/share_web';
 
                 // 设置iframe地址
-                $iframe.attr('src', onlineUrl)
+                $iframe.attr('src', testUrl)
                     .css({position : "fixed", left : 0, top : 0, right : 0, bottom : 0, 'z-index' : 8888, 'width' : '100%', 'height' : '100%'});
 
                 $iframe.load(function () {

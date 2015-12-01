@@ -20,7 +20,8 @@
             </div>
             <div class="media">
                 <div class="media_photo">
-                    <img id="media-picture" src="" />
+                    <img id="media-picture" src="{{ feed.picture }}" ng-if="feed.picture" />
+                    <img id="media-picture" src="/share_web/img/null.png" ng-if="!feed.picture" />
                 </div>
                 <div class="media_upload-loading" ng-show="status.photoUploading">
                     <img src="/share_web/img/loading_upload.gif" />
