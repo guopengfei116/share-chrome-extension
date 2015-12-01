@@ -6,6 +6,7 @@ $(function () {
 
     // iframe加载状态
     var iframeLoad = false;
+    var protocol = location.protocol;
 
     /*
     * 与插件通信
@@ -37,7 +38,7 @@ $(function () {
             else {
                 $framePage.remove();
                 var $iframe = $('<iframe id="nice-share-iframe-page"></iframe>');
-                var onlineUrl = 'http://niceshare.goextension.com';
+                var onlineUrl = protocol + '//niceshare.goextension.com';
                 var testUrl = onlineUrl + ':9800/share_web';
 
                 // 设置iframe地址

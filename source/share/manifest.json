@@ -14,7 +14,7 @@
     },
     //"options_page" : "options.html",
     "background" : {
-        "scripts": ["js/background.js"]
+        "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/util/report.js", "js/background.js"]
     },
     "content_scripts" : [
         {
