@@ -47,7 +47,7 @@
                     </span>
                     <span class="operation_upload_hint">{{ language.addPhoto }}</span>
                 </div>
-                <button class="operation_share" ng-click="share('facebook')">{{ language.share }}</button>
+                <button class="operation_share" ng-class="{'operation_share-disabled' : status.sharing}" ng-click="share('facebook')">{{ language.share }}</button>
             </div>
         </li>
     </ul>

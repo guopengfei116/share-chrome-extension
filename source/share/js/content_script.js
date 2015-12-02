@@ -84,18 +84,19 @@ $(function () {
         * 获取网站信息方法
         * */
         function getPageData () {
+            var description = $('meta[name=description]').attr('content');
             var data = {
                 link : window.location.href,
                 title : $('title').text(),
                 picture : '',
-                description : $('meta[name=description]').attr('content')
+                description : description === 'undefined'? '' : description || ''
             };
             // 获取一张图片src
             $('img').each(function (i, e) {
                 if(/^.*\.(jpg|jpeg|gif|png){1}(\?.*)?$/.test(this.src) && !data.picture) {
                     var width = this.width;
                     var height = this.height;
-                    if(width * height > 5000) {
+                    if(width * height > 30 * 30) {
                         data.picture = this.src;
                         return false;
                     }

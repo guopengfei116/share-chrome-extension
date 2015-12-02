@@ -11,6 +11,7 @@ niceShare.Controller.controller('shareCtrl', [
         $scope.status = {
             photoUpload : false,
             photoUploading : false,
+            sharing : false,
             photoFormatError : false,
             shareSuccess : false
         };
@@ -121,11 +122,19 @@ niceShare.Controller.controller('shareCtrl', [
         // 分享按钮
         $scope.share = function (type) {
 
+            // 正在分享
+            if($scope.status.sharing) {
+                return;
+            }
+
             // message效验
             if(!/^.{1,150}$/.test($scope.feed.message || '')) {
                 blink();
                 return;
             }
+
+            // 修改分享状态
+            $scope.status.sharing = true;
 
             // 发送分享到第三方应用
             switch (type) {
@@ -141,6 +150,7 @@ niceShare.Controller.controller('shareCtrl', [
                     }, function (response) {
                         if(response && response.id) {
                             $scope.$apply(function () {
+                                $scope.status.sharing = false;
                                 $scope.status.shareSuccess = true;
                                 $timeout(function () {
                                     $scope.status.shareSuccess = false;
@@ -148,18 +158,18 @@ niceShare.Controller.controller('shareCtrl', [
                                 }, 1000);
                             });
                         }else {
-                            /*$scope.$apply(function () {
-                                $scope.status.photoFormatError = true;
-                                $timeout(function () {
-                                    $scope.status.shareSuccess = false;
-                                }, 1000);
-                            });*/
+                            $scope.$apply(function () {
+                                $scope.status.sharing = false;
+                            });
                         }
                     });
                     break;
                 case 'google+' :
+                    $scope.status.sharing = false;
                     console.log('google+');
                     break;
+                default :
+                    $scope.status.sharing = false;
             }
             // 上报分享操作
             report.infinite('share_clikc');

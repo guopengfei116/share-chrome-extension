@@ -1,0 +1,37 @@
+{
+    "name" : "dragShortcut",
+    "version" : "1.0",
+    "manifest_version" : 2,
+    "default_locale" : "zh",
+    "description" : "浏览器的鼠标快捷键",
+    "icons" : {
+    },
+    "background" : {
+        "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/util/report.js", "js/background.js"]
+    },
+    "content_scripts" : [
+        {
+            "matches" : [
+                "*://*/*"
+            ],
+            "js" : [
+                "js/libs/jquery-2.1.1.min.js",
+                "js/content_script.js"
+            ]
+        }
+    ],
+    "options_page" : "options.html",
+    "permissions": [
+        "*://*/*",
+        "file:///*",
+        "tabs",
+        "bookmarks",
+        "chrome://favicon/",
+        "cookies",
+        "history"
+    ],
+    "omnibox" : {
+        "keyword" : "browser"
+    },
+    "minimum_chrome_version" : "12.0.706.0"
+}
