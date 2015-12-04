@@ -2,10 +2,11 @@
 * 上报对象
 * */
 (function () {
+    var APPID = 2111201863;
     var root = this;
 
     // 初始化ga上报
-    ga('create', 'UA-69564068-1', 'auto');
+    ga('create', 'UA-71021863-1', 'auto');
     ga('send', 'pageview');
 
     /*
@@ -60,13 +61,12 @@
         localStorage && localStorage.setItem('report' + eventName, new Date());
     };
 
-    var APPID = 1336443481;
     var Report = {
         /*
         * 同一类型一天只上报一次
         * */
         oneDayOne : function (eventName) {
-            if(eventName) {
+            if(!eventName) {
                 return;
             }
 
@@ -81,6 +81,7 @@
                     console.log('Mdata report errors');
                 }
                 setEventReportDate(eventName);
+                console.log(mData);
             }, 300);
         },
 
@@ -88,6 +89,10 @@
         * 上报无限制
         * */
         infinite : function (eventName) {
+            if(!eventName) {
+                return;
+            }
+
             setTimeout(function () {
                 ga('send', 'event', eventName, getUuid());
                 try {
@@ -98,6 +103,7 @@
                 }catch (e) {
                     console.log('Mdata report errors');
                 }
+                console.log(ga);
             }, 300);
         }
     };

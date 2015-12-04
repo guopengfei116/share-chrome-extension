@@ -19,23 +19,21 @@ if (file_exists("pics/".date("Y-m-d").'/' . $_FILES["pic"]["name"])) {
     $code = 0;
     $msg = 'error';
 } else {
-    if(!file_exists($_FILES["pic"]["tmp_name"], "pics/".date("Y-m-d"))){
-        mkdir($_FILES["pic"]["tmp_name"], "pics/".date("Y-m-d"),0775);
+    if(!file_exists("pics/".date("Y-m-d"))){
+        mkdir("pics/".date("Y-m-d"),0775);
     }
     $_FILES["pic"]["name"] = move_uploaded_file($_FILES["pic"]["tmp_name"], "pics/".date("Y-m-d").'/' . $_FILES["pic"]["name"]);
-    if(file_exists("pics/".date("Y-m-d").'/' . $_FILES["pic"]["name"])){
+    if(!file_exists("pics/".date("Y-m-d").'/'.$_FILES["pic"]["name"])){
         $picUrl = "http://niceshare.goextension.com/pics/".date("Y-m-d").'/' . $newname;
         $code = 1;
         $msg = 'success';
         $data = ["status" => "success", "pic" => $picUrl];
+
     }else{
         $code = 0;
         $msg = 'error';
+        $data = '';
     }
-
-    $code = 1;
-    $msg = 'success';
-    $data = ["status" => "success", "pic" => $picUrl];
 }
 
 $config = array(

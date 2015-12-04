@@ -1,0 +1,52 @@
+{
+    "chrome_extension_name" : {
+        "message" : "Mouse Drag"
+    },
+    "extDescription" : {
+        "description" : "描述信息",
+        "message" : "Sürükleme eklentisi, sık kullanılan 6 adet mouse hareketini destekler."
+    },
+    "option_prompt" : {
+        "description" : "操作提示",
+        "message" : "Aşağıdaki koşullardan birini gerçekleştirerek sürükleme özelliği iptal edebilirsiniz."
+    },
+    "option_alt_key" : {
+        "message" : "ALT tuşuna basın"
+    },
+    "option_ctrl_key" : {
+        "message" : "CTRL tuşuna basın"
+    },
+    "option_mouse_gesture" : {
+        "message" : "Mouse Hareketleri"
+    },
+    "option_right_key" : {
+        "message" : "Mouse sağ tuşuna basılı tutarak sürükleme hareketlerini gerçekleştirin."
+    },
+    "option_gesture_classify" : {
+        "message" : "6 adet mouse hareketini destekler"
+    },
+    "option_right_gesture" : {
+        "message" : "→ Sonraki Sayfa"
+    },
+    "option_left_gesture" : {
+        "message" : "← Önceki Sayfa"
+    },
+    "option_up_gesture" : {
+        "message" : "↑ Sayfanın Başı"
+    },
+    "option_down_gesture" : {
+        "message" : "↓ Sayfanın Sonu"
+    },
+    "option_up_angle_gesture" : {
+        "message" : "^ Yenile"
+    },
+    "option_down_right_gesture" : {
+        "message" : "L Kapat"
+    },
+    "option_save" : {
+        "message" : "Kaydetme Ayarları"
+    },
+    "option_clear" : {
+        "message" : "Temizleme Ayarları"
+    }
+}

@@ -1,6 +1,52 @@
 {
-    "name" : {
-        "message" : "feifei",
-        "description" : "application name"
+    "chrome_extension_name" : {
+        "message" : "Mouse Drag"
+    },
+    "extDescription" : {
+        "description" : "描述信息",
+        "message" : "Plugin de arrastrar y soltar, soporta 6 usos del ratón"
+    },
+    "option_prompt" : {
+        "description" : "操作提示",
+        "message" : "Debes cumplir los requisitos de la lista para poder usar el plugin"
+    },
+    "option_alt_key" : {
+        "message" : "Presiona la tecla ALT"
+    },
+    "option_ctrl_key" : {
+        "message" : "Presiona la tecla CTRL"
+    },
+    "option_mouse_gesture" : {
+        "message" : "Uso de ratón"
+    },
+    "option_right_key" : {
+        "message" : "Click derecho"
+    },
+    "option_gesture_classify" : {
+        "message" : "Soporta 6 usos de ratón"
+    },
+    "option_right_gesture" : {
+        "message" : "→ Hacia adelante"
+    },
+    "option_left_gesture" : {
+        "message" : "← Hacia atrás"
+    },
+    "option_up_gesture" : {
+        "message" : "↑ Arrastrar al principio de página"
+    },
+    "option_down_gesture" : {
+        "message" : "↓ Arrastrar al final de página"
+    },
+    "option_up_angle_gesture" : {
+        "message" : "^ Actualizar"
+    },
+    "option_down_right_gesture" : {
+        "message" : "L Cerrar"
+    },
+    "option_save" : {
+        "message" : "Guardar ajustes"
+    },
+    "option_clear" : {
+        "message" : "Limpiar ajustes"
     }
 }

@@ -1,6 +1,9 @@
 {
-    "name" : {
-        "message" : "feifei",
-        "description" : "application name"
+    "chrome_extension_name" : {
+        "message" : "Nice Share"
+    },
+    "extDescription" : {
+        "description" : "描述信息",
+        "message" : "Facebook Share es un Plug-in para un solo clic se puede compartir información a Facebook"
     }
 }

@@ -1,0 +1,52 @@
+{
+    "chrome_extension_name" : {
+        "message" : "Mouse Drag"
+    },
+    "extDescription" : {
+        "description" : "描述信息",
+        "message" : "O Mouse Drag suporta 6 gestos de mouse comum."
+    },
+    "option_prompt" : {
+        "description" : "操作提示",
+        "message" : "Mouse Drag será desabilitadas atendendo a qualquer uma das seguintes condições:"
+    },
+    "option_alt_key" : {
+        "message" : "Pressione o botão Alt "
+    },
+    "option_ctrl_key" : {
+        "message" : "Pressione o botão Ctrl"
+    },
+    "option_mouse_gesture" : {
+        "message" : "Os gestos de mouse"
+    },
+    "option_right_key" : {
+        "message" : "Realize gestos pressionando o botão direito do mouse e  arrastando o mouse."
+    },
+    "option_gesture_classify" : {
+        "message" : "Suporta 6 gestos de mouse comum:"
+    },
+    "option_right_gesture" : {
+        "message" : "→ Avançar"
+    },
+    "option_left_gesture" : {
+        "message" : "← Voltar"
+    },
+    "option_up_gesture" : {
+        "message" : "↑ Role para a parte superior"
+    },
+    "option_down_gesture" : {
+        "message" : "↓ Vá até a parte inferior da página"
+    },
+    "option_up_angle_gesture" : {
+        "message" : "^ Recarregar"
+    },
+    "option_down_right_gesture" : {
+        "message" : "L Fechar"
+    },
+    "option_save" : {
+        "message" : "Guardar"
+    },
+    "option_clear" : {
+        "message" : "Apagar"
+    }
+}

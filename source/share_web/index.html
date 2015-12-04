@@ -20,12 +20,11 @@
         <script>
             window.fbAsyncInit = function() {
                 FB.init({
-                    // 春争  UUGameBox  686189861434770
                     // 郭鹏飞 分享  1652508341698746  分享test1 1653974371552143
                     appId: '1652508341698746',
                     cookie: true,
                     //status: true,
-                    //oauth: true,
+                    oauth: true,
                     xfbml: true,
                     version: 'v2.5'
                 });
@@ -38,7 +37,6 @@
             };
 
             (function(d, s, id){
-                //"//connect.facebook.net/en_US/sdk/debug.js";
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) {return;}
                 js = d.createElement(s); js.id = id;

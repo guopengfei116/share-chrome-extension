@@ -1,6 +1,52 @@
 {
-    "name" : {
-        "message" : "feifei",
-        "description" : "application name"
+    "chrome_extension_name" : {
+        "message" : "Mouse Drag"
+    },
+    "extDescription" : {
+        "description" : "描述信息",
+        "message" : "Mouse drag makes your web browsing more productive with 6 common mouse gestures. Drag mouse makes browsing more enjoyable."
+    },
+    "option_prompt" : {
+        "description" : "操作提示",
+        "message" : "mouse Drag will be disabled in the following conditions:"
+    },
+    "option_alt_key" : {
+        "message" : "Press Alt button"
+    },
+    "option_ctrl_key" : {
+        "message" : "Press Ctrl button"
+    },
+    "option_mouse_gesture" : {
+        "message" : "Mouse Gestures"
+    },
+    "option_right_key" : {
+        "message" : "Perform gestures by holding right mouse button and dragging mouse."
+    },
+    "option_gesture_classify" : {
+        "message" : "Drag your mouse to perform the following 6 gestures:"
+    },
+    "option_right_gesture" : {
+        "message" : "→ Forward"
+    },
+    "option_left_gesture" : {
+        "message" : "← Back"
+    },
+    "option_up_gesture" : {
+        "message" : "↑ Scroll to top"
+    },
+    "option_down_gesture" : {
+        "message" : "↓ Scroll to bottom"
+    },
+    "option_up_angle_gesture" : {
+        "message" : "^ Refresh"
+    },
+    "option_down_right_gesture" : {
+        "message" : "L Close"
+    },
+    "option_save" : {
+        "message" : "Save"
+    },
+    "option_clear" : {
+        "message" : "Reset to default"
     }
 }

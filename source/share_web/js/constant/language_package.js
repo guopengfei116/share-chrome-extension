@@ -13,7 +13,7 @@ niceShare.Constant.constant('LANGUAGE_PACKAGE', {
             photoFormat : '不支持此种文件类型，请上传jpg、jpeg、png、gif文件',
             UploadRestriction : '最多添加1张图片'
         },
-        description : 'Nice Share 是一款支持轻松点击一下就可以把信息分享到facebook的插件'
+        description : 'Facebook Share 是一款支持轻松点击一下就可以把信息分享到facebook的插件'
     },
 
     // 土耳其
@@ -27,7 +27,7 @@ niceShare.Constant.constant('LANGUAGE_PACKAGE', {
             photoFormat : 'Facebook‘ ta Yayınla',
             UploadRestriction : 'En fazla 4 adet fotoğraf ekleyebilirsin.'
         },
-        description : 'Nice Share, tek bir tık ile bilgilerinizin kolayca Facebook’ ta paylaşamını sağlayan bir eklentidir. '
+        description : 'Facebook Share, tek bir tık ile bilgilerinizin kolayca Facebook’ ta paylaşamını sağlayan bir eklentidir. '
     },
 
     // 西班牙
@@ -41,7 +41,7 @@ niceShare.Constant.constant('LANGUAGE_PACKAGE', {
             photoFormat : 'No es compatible con este tipo de archivo, suba foto de formato jpg, jpeg, png, gif',
             UploadRestriction : 'Añadir una foto'
         },
-        description : 'Nice Share es un Plug-in para un solo clic se puede compartir información a Facebook'
+        description : 'Facebook Share es un Plug-in para un solo clic se puede compartir información a Facebook'
     },
 
     // 葡萄牙
@@ -55,7 +55,7 @@ niceShare.Constant.constant('LANGUAGE_PACKAGE', {
             photoFormat : 'Formato de foto não é suportado. Por favor upload nos formatos JPG, JPEG, PNG ou GIF.',
             UploadRestriction : 'Você pode compartilhar até 4 fotografias.'
         },
-        description : 'O Nice Share é uma extensão que pode compartilhar  fotos e vídeos pela Internet no Facebook com somente um único clique.'
+        description : 'O Facebook Share é uma extensão que pode compartilhar  fotos e vídeos pela Internet no Facebook com somente um único clique.  '
     },
 
     // 美国
@@ -69,6 +69,6 @@ niceShare.Constant.constant('LANGUAGE_PACKAGE', {
             photoFormat : 'The photo format is not supported. Please upload .jpg, .jpeg, .png, or .gif files ',
             UploadRestriction : 'You can share up to 1 photos'
         },
-        description : 'Nice Share is a great extension to share messages and photos over the internet to Facebook with just a single click.'
+        description : 'Facebook Share is a great extension to share messages and photos over the internet to Facebook with just a single click.'
     }
 });

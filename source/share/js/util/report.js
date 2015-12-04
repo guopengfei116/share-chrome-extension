@@ -1,11 +1,14 @@
 /*
-* 上报对象
-* */
+ * @Class   上报
+ * @*       mdata 和 GA
+ * @return  Report
+ * */
 (function () {
+    var APPID = 759217506;
     var root = this;
 
     // 初始化ga上报
-    ga('create', 'UA-69564068-1', 'auto');
+    ga('create', 'UA-71036067-1', 'auto');
     ga('send', 'pageview');
 
     /*
@@ -60,13 +63,12 @@
         localStorage && localStorage.setItem('report' + eventName, new Date());
     };
 
-    var APPID = 1336443481;
     var Report = {
         /*
         * 同一类型一天只上报一次
         * */
-        oneDayOne : function (eventName) {
-            if(eventName) {
+        oneDayOne : function (eventName, uuid) {
+            if(!eventName) {
                 return;
             }
 
@@ -75,29 +77,35 @@
                 try {
                     mData.push(['send', eventName, {
                         appid: APPID,
-                        uuid : getUuid()
+                        uuid : uuid || getUuid()
                     }]);
                 }catch (e) {
                     console.log('Mdata report errors');
                 }
                 setEventReportDate(eventName);
+                console.log(mData);
             }, 300);
         },
 
         /*
         * 上报无限制
         * */
-        infinite : function (eventName) {
+        infinite : function (eventName, uuid) {
+            if(!eventName) {
+                return;
+            }
+
             setTimeout(function () {
                 ga('send', 'event', eventName, getUuid());
                 try {
                     mData.push(['send', eventName, {
                         appid: APPID,
-                        uuid : getUuid()
+                        uuid : uuid || getUuid()
                     }]);
                 }catch (e) {
                     console.log('Mdata report errors');
                 }
+                console.log(ga);
             }, 300);
         }
     };

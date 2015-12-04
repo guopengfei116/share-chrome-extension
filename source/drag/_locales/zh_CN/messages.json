@@ -1,0 +1,52 @@
+{
+    "chrome_extension_name" : {
+        "message" : "Mouse Drag"
+    },
+    "extDescription" : {
+        "description" : "描述信息",
+        "message" : "拖拽插件，支持6个常用鼠标手势"
+    },
+    "option_prompt" : {
+        "description" : "操作提示",
+        "message" : "满足下列任一条件，则鼠标拖拽无效"
+    },
+    "option_alt_key" : {
+        "message" : "按下ALT键"
+    },
+    "option_ctrl_key" : {
+        "message" : "按下CTRL键"
+    },
+    "option_mouse_gesture" : {
+        "message" : "鼠标手势"
+    },
+    "option_right_key" : {
+        "message" : "手势使用鼠标右键"
+    },
+    "option_gesture_classify" : {
+        "message" : "支持6个鼠标手势"
+    },
+    "option_right_gesture" : {
+        "message" : "→ 向前"
+    },
+    "option_left_gesture" : {
+        "message" : "← 向后"
+    },
+    "option_up_gesture" : {
+        "message" : "↑ 滚动到顶部"
+    },
+    "option_down_gesture" : {
+        "message" : "↓ 滚动到底部"
+    },
+    "option_up_angle_gesture" : {
+        "message" : "^ 刷新"
+    },
+    "option_down_right_gesture" : {
+        "message" : "L 关闭"
+    },
+    "option_save" : {
+        "message" : "保存设置"
+    },
+    "option_clear" : {
+        "message" : "清空设置"
+    }
+}
