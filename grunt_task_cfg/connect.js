@@ -11,6 +11,7 @@ exports.options = {
     open : true,
     hostname : '0.0.0.0',
     livereload : 35729,
+    // 如果开启livereload，那么keepalive则不需要启动
     keepalive : false,
     base : [
         path.basename(gruntProject.debug ? gruntProject.prd : gruntProject.dest)
@@ -22,8 +23,8 @@ exports.options = {
  * */
 if(!gruntProject.debug) {
     exports.options.port = 9801;
+    // 开启keepalive来保持服务启动会替掉livereload功能
     exports.options.keepalive = true;
-    exports.options.livereload = false
 }
 
 /**

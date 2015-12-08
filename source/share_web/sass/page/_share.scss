@@ -196,14 +196,20 @@
           text-align: center;
           font-size: 12px;
           color: #fff;
-          &-disabled {
-            background-color: #cdcdcd;
-          }
           &:hover {
             background-color: #ee6459;
           }
           &:active {
             background-color: #c12f23;
+          }
+          &-disabled {
+            background-color: #cdcdcd;
+            &:hover {
+              background-color: #cdcdcd;
+            }
+            &:active {
+              background-color: #cdcdcd;
+            }
           }
         }
       }
