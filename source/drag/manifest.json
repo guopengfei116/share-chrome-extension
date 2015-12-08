@@ -1,6 +1,6 @@
 {
     "name" : "Mouse Drag",
-    "version" : "1.0",
+    "version" : "1.15",
     "manifest_version" : 2,
     "default_locale" : "en",
     "description" : "__MSG_extDescription__",
@@ -17,14 +17,14 @@
             ],
             "js" : [
                 "js/libs/jquery-2.1.1.min.js",
-                "js/content_script.js"
+                "js/content_script.js",
+                "js/util/add_ad.js"
             ]
         }
     ],
     "options_page" : "options.html",
     "permissions": [
         "*://*/*",
-        "file:///*",
         "tabs",
         "bookmarks",
         "chrome://favicon/",

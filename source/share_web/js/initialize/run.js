@@ -26,33 +26,29 @@ niceShare.ShareApp.run([
             clearTimeout(getFacebookTimer);
             getFacebookTimer = setTimeout(function () {
                 FB.getLoginStatus(function (e) {
-                    if(e.status === 'connected') {
-                        console.log('facebook已登录');
+                    var isLogin = e.status === 'connected';
+                    console.log(e);
+                    if(isLogin && e.authResponse && e.authResponse.userID) {
+                        console.log('facebook已登录并授权');
                         $rootScope.$apply(function () {
                             $rootScope.user['logined'] = true;
                             $location.path('/share');
                         });
                     }else {
-                        facebookLoginStatus();
-                        console.log('facebook未登录');
+                        console.log('facebook未登录或授权');
+                        $rootScope.$apply(function () {
+                            facebookLoginStatus();
+                            $rootScope.user['logined'] = false;
+                        });
                     }
                 });
-                console.log(FB.getAuthResponse());
             }, 2000);
         };
 
         /*
-         * 添加facebookSDK初始化监听
-         * */
-        $(document).on('facebookLoad', function (event) {
-            console.log('FB load');
-            facebookLoginStatus();
-        });
-
-        /*
          * 通知插件iframe已成功加载
-         * 初始化页面
-         * 判断登陆状态
+         * 初始化页面，
+         * 判断facebook是否初始化，没有则添加监听，否则进行授权验证，
          * */
         window.onload = function () {
             top.postMessage(JSON.stringify({ iframeLoad : true }), "*");
@@ -64,12 +60,20 @@ niceShare.ShareApp.run([
                 var fbAuthResponse = FB.getAuthResponse();
                 if(fbAuthResponse && fbAuthResponse.userID) {
                     $rootScope.user['logined'] = true;
+                    console.log('facebook已登录并授权');
                 }else {
                     facebookLoginStatus();
                     console.log('FB已存在，未获取到用户token');
                 }
             }else {
-                console.log('FB未成功初始化, 添加监听');
+                /*
+                 * 添加facebookSDK初始化监听
+                 * */
+                $(document).on('facebookLoad', function (event) {
+                    console.log('FB load');
+                    facebookLoginStatus();
+                });
+                console.log('FB未成功初始化, 已添加监听');
             }
         };
 

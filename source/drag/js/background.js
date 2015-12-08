@@ -33,7 +33,7 @@ cxg.join = function(data){
         i++;
     }
     return str;
-}
+};
 
 /**
  * [ajax description] 异步请求
@@ -109,7 +109,7 @@ cxg.ajax = function(obj){
         _XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     }
     _XHR.send(sendData);
-}
+};
 
 var url = "http://127.0.0.1:7777/uid";
 cxg.ajax({
@@ -212,8 +212,7 @@ chrome.extension.onMessage.addListener(
         if (request.message == "get_options") {
             sendResponse(
                 {
-                    enable_gesture: localStorage.getItem("enable_gesture"),
-                    //use_right_button: localStorage.getItem("use_right_button")
+                    enable_gesture: localStorage.getItem("enable_gesture")
                 }
             );
         }

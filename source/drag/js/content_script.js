@@ -410,6 +410,7 @@ chrome.extension.sendMessage({
     options = response;
     console.log(options);
 });
+
 /*
 * 接受配置修改信息
 * */

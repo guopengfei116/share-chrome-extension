@@ -7,8 +7,7 @@ function notifyOptionChange(tabs) {
             tab.id, {
                 message: "set_options",
                 options: {
-                    enable_gesture: localStorage.getItem('enable_gesture'),
-                    //use_right_button: localStorage.getItem('use_right_button')
+                    enable_gesture: localStorage.getItem('enable_gesture')
                 }
             }
         );
@@ -25,7 +24,6 @@ function iterateWindows(windows) {
 // 修改配置
 function saveOptions() {
     localStorage.setItem('enable_gesture', $('#enable_gesture').is(':checked'));
-    //localStorage.setItem('use_right_button', $('#enable_gesture').is(':checked'));
 
     // 像所有窗口发送修改通知
     chrome.windows.getAll({
@@ -41,20 +39,17 @@ function saveOptions() {
 
 // 恢复默认配置
 function resetOptions() {
-    $('#enable_gesture').attr('checked',  true);
-    //$('#use_right_button').attr('checked', false);
+    $('#enable_gesture').attr('checked',  false);
 }
 
 // 恢复配置
 function restoreOptions () {
     var enable_gesture = localStorage.getItem('enable_gesture');
-    if(enable_gesture !== undefined) {
-        $('#enable_gesture').attr('checked', true);
-    }else {
+    if(!enable_gesture || enable_gesture == 'false') {
         $('#enable_gesture').attr('checked', false);
+    }else {
+        $('#enable_gesture').attr('checked', true);
     }
-    //var use_right_button = localStorage.getItem('use_right_button');
-    //$('#use_right_button').attr('checked', use_right_button == "true");
 }
 
 // 国际化
@@ -62,7 +57,7 @@ function internationalization () {
     function setText(id, name) {
         $('#' + id).text(chrome.i18n.getMessage(name));
     }
-    setText("title", "extDescription");
+    setText("prompt", "extDescription");
     setText("disable_drag", "option_prompt");
     setText("alt_key_label", "option_alt_key");
     setText("ctrl_key_label", "option_ctrl_key");
