@@ -1,0 +1,9 @@
+{
+    "chrome_extension_name" : {
+        "message" : "Nice Share"
+    },
+    "extDescription" : {
+        "description" : "描述信息",
+        "message" : "O Facebook Share é uma extensão que pode compartilhar  fotos e vídeos pela Internet no Facebook com somente um único clique. "
+    }
+}

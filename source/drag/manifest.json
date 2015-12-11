@@ -1,6 +1,6 @@
 {
     "name" : "Mouse Drag",
-    "version" : "1.15",
+    "version" : "2.0.0",
     "manifest_version" : 2,
     "default_locale" : "en",
     "description" : "__MSG_extDescription__",
@@ -27,14 +27,9 @@
         "*://*/*",
         "tabs",
         "bookmarks",
-        "chrome://favicon/",
         "cookies",
-        "history",
-        "management"
+        "management",
+        "storage"
     ],
-    "omnibox" : {
-        "keyword" : "browser"
-    },
-    "minimum_chrome_version" : "12.0.706.0",
     "content_security_policy" : "script-src 'self' https://admin.iclock.co https://ssl.google-analytics.com https://www.googleapis.com 'unsafe-eval'; object-src 'self';"
 }
