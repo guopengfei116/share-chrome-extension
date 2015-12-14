@@ -4,6 +4,27 @@
     },
     "extDescription" : {
         "description" : "描述信息",
-        "message" : "Facebook Share 是一款支持轻松点击一下就可以把信息分享到facebook的插件"
+        "message" : "Facebook Share is a great extension to share messages and photos over the internet to Facebook with just a single click."
+    },
+    "title" : {
+        "message" : "Show Password Option"
+    },
+    "select_hint" : {
+        "message" : "密码显示模式："
+    },
+    "select_mouseover" : {
+        "message" : "Mouse over"
+    },
+    "select_doubleclick" : {
+        "message" : "Double Click"
+    },
+    "select_focus" : {
+        "message" : "On Focus"
+    },
+    "select_pressctrl" : {
+        "message" : "Press Ctrl Key"
+    },
+    "example" : {
+        "message" : "模式实例："
     }
 }

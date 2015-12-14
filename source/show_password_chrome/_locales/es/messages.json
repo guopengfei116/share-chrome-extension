@@ -4,6 +4,27 @@
     },
     "extDescription" : {
         "description" : "描述信息",
-        "message" : "Facebook Share es un Plug-in para un solo clic se puede compartir información a Facebook"
+        "message" : "Facebook Share is a great extension to share messages and photos over the internet to Facebook with just a single click."
+    },
+    "title" : {
+        "message" : "Show Password Option"
+    },
+    "select_hint" : {
+        "message" : "密码显示模式："
+    },
+    "select_mouseover" : {
+        "message" : "Mouse over"
+    },
+    "select_doubleclick" : {
+        "message" : "Double Click"
+    },
+    "select_focus" : {
+        "message" : "On Focus"
+    },
+    "select_pressctrl" : {
+        "message" : "Press Ctrl Key"
+    },
+    "example" : {
+        "message" : "模式实例："
     }
 }
