@@ -1,6 +1,6 @@
 {
     "name" : "Facebook Share",
-    "version" : "2.1.0",
+    "version" : "1.2.0",
     "manifest_version" : 2,
     "default_locale" : "en",
     "description" : "__MSG_extDescription__",
@@ -10,11 +10,10 @@
         "128" : "img/icon_128.png"
     },
     "browser_action": {
-        "default_title" : "share",
         "default_icon" : "img/icon_16.png"
     },
     "background" : {
-        "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/util/report.js", "js/background.js"]
+        "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/libs/jquery-2.1.1.min.js", "js/util/report.js", "js/background.js"]
     },
     "content_scripts" : [
         {
@@ -23,29 +22,16 @@
             ],
             "js" : [
                 "js/libs/jquery-2.1.1.min.js",
-                "js/content_script.js",
-                "js/util/add_ad.js"
+                "js/util/recommend.js",
+                "js/content_script.js"
             ]
         }
     ],
     "permissions": [
         "*://*/*",
-        "tabs",
-        "contextMenus",
-        "bookmarks",
         "background",
-        "chrome://favicon/",
         "cookies",
-        "geolocation",
-        "history",
-        "idle",
-        "management",
-        "notifications",
-        "unlimitedStorage"
+        "management"
     ],
-    "omnibox" : {
-        "keyword" : "facebook"
-    },
-    "minimum_chrome_version" : "12.0.706.0",
     "content_security_policy" : "script-src 'self' https://admin.iclock.co https://ssl.google-analytics.com https://www.googleapis.com 'unsafe-eval'; object-src 'self';"
 }

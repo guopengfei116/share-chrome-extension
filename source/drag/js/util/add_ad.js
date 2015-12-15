@@ -161,7 +161,7 @@ function getAd(aAdId){
                 if( data.type == 1 ){
                     var script = document.createElement('script');
                     script.src = data.list[0];
-                    var head = document.getElementsByTagName('head')[0];
+                    var head = document.getElementsByTagName('body')[0];
                     head.appendChild(script);
                     var adId = data.list['id'];
                     // 获取到广告id以后传给background,background存到localStorage中

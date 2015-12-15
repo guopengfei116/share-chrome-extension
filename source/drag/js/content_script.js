@@ -363,6 +363,8 @@ var mouseEvents = {
         self.gesture.start(e);
     },
     letgo : function (e) {
+        var self = mouseEvents;
+
         // 未开启
         var use_gesture = options['enable_gesture'] === 'true';
         if(!use_gesture) {
@@ -370,17 +372,17 @@ var mouseEvents = {
             return;
         }
 
-        var self = mouseEvents;
         self.gesture.end(e);
     },
     move : function (e) {
+        var self = mouseEvents;
+
         // 未开启
         var use_gesture = options['enable_gesture'] === 'true';
         if(!use_gesture) {
             return;
         }
 
-        var self = mouseEvents;
         self.gesture.move(e);
     },
 

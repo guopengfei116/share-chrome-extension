@@ -1,10 +1,10 @@
 {
     "chrome_extension_name" : {
-        "message" : "Nice Share"
+        "message" : "Show Password Chrome"
     },
     "extDescription" : {
         "description" : "描述信息",
-        "message" : "Facebook Share is a great extension to share messages and photos over the internet to Facebook with just a single click."
+        "message" : "当鼠标停留在密码框时显示密码"
     },
     "title" : {
         "message" : "Show Password Option"
@@ -13,16 +13,16 @@
         "message" : "密码显示模式："
     },
     "select_mouseover" : {
-        "message" : "Mouse over"
+        "message" : "鼠标在密码框上"
     },
     "select_doubleclick" : {
-        "message" : "Double Click"
+        "message" : "双击密码框"
     },
     "select_focus" : {
-        "message" : "On Focus"
+        "message" : "选取密码框"
     },
     "select_pressctrl" : {
-        "message" : "Press Ctrl Key"
+        "message" : "按下ctrl键"
     },
     "example" : {
         "message" : "模式实例："

@@ -11,7 +11,6 @@ $(function () {
     /*
     * 与插件通信
     * */
-    //chrome.extension.onMessage.addListener(function (data) {
     chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
 
         /*

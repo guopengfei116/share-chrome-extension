@@ -5,6 +5,7 @@
   "default_locale" : "en",
   "description" : "__MSG_extDescription__",
   "icons" : {
+    "128" : "img/icon_128.png"
   },
   "background" : {
     "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/util/report.js", "js/background.js"]
