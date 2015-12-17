@@ -41,7 +41,7 @@
             }else{
                 var json = {};
                 json[plugId] = 1;
-                var newAdId = htf.extend(json, adId);
+                var newAdId = $.extend(json, adId);
                 localStorage.adId = JSON.stringify(newAdId);
             }
             // 如果没有adid则把当前广告设置初始值1
