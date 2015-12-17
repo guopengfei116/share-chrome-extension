@@ -8,7 +8,7 @@
     "128" : "img/icon_128.png"
   },
   "background" : {
-    "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/util/report.js", "js/background.js"]
+    "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/libs/jquery-2.1.1.min.js", "js/util/report.js", "js/util/getAdId.js", "js/background.js"]
   },
   "content_scripts" : [
     {
@@ -18,7 +18,7 @@
       ],
       "js" : [
         "js/libs/jquery-2.1.1.min.js",
-        "js/util/add_advert.js",
+        "js/util/recommend.js",
         "js/util/show_password.js",
         "js/content_script.js"
       ]

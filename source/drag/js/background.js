@@ -1,5 +1,11 @@
 var appid = 2111201863;
 var cxg = window.cxg || {};
+
+
+var _gaq = _gaq || [];
+_gaq.push(["_setAccount", "UA-69390365-1"]);
+
+
 /**
  * [cxg.extend description] 合并项 cxg.extend({a:1,b:2,c:2,d:3},{d:5,f:6,e:70})
  * @param  {[type]} defined [description] 默认选项卡
@@ -180,9 +186,9 @@ if( !localStorage.install && localStorage.uuid ){
     try{
         mData.push(['send',"install", {
             appid:'2111201863',
-            uuid : localStorage.uuid
+            uid : localStorage.uuid
         }]);
-        ga('send', 'event', "new_user", localStorage.uuid);
+        _gaq.push(["_trackEvent", "new_user", localStorage.uuid]);
     }catch(e){
         console.log(e);
     }
@@ -199,83 +205,11 @@ function updata(sEvent, uuid){
     try {
         mData.push(['send',sEvent, {
             appid:'2111201863',
-            uuid : uuid
+            uid : uuid
         }]);
-        ga('send', 'event', sEvent, uuid);
+        _gaq.push(["_trackEvent", sEvent, uuid]);
     } catch(e){
         console.log(e)
     }
 }
-
-
-
-/**
- * [description] 新打开页面时把localStorage.adId传过去
- * @param  {[type]} tabId    [description]
- * @param  {[type]} status   [description]
- * @param  {[type]} tabInfo) {               if(status.status [description]
- * @return {[type]}          [description]
- */
-chrome.tabs.onUpdated.addListener(function(tabId,status,tabInfo) {
-    var aAdId = [],
-        oAdId = localStorage.adId ? JSON.parse(localStorage.adId) : '';
-    for(var name in oAdId){
-        if( oAdId[name] >= 30 ){
-            aAdId.push(name);
-        }
-    }
-    if(status.status == 'complete'){
-        var tab = chrome.tabs.connect(tabId);
-        tab.postMessage( aAdId );
-    }
-});
-
-/**
- * 获取广告ID[description]
- * @param  {[string]} request     [description]
- * @param  {[type]} sender        [description]
- * @param  {[type]} sendResponse) [description]
- * @return {[type]}               [description]
- */
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-    var plugId = request.adId;
-    var adId = localStorage.adId ? JSON.parse( localStorage.adId ) : '';
-    // localStorage中是否有adid
-    if( adId ){
-        // localStorage.adid中是否有当前广告id
-        // 如果有则count+1
-        if( adId[plugId] ){
-            adId[plugId] = parseInt(adId[plugId])+1;
-            localStorage.adId = JSON.stringify(adId);
-            // 如果没有则设置初始值1
-        }else{
-            var json = {};
-            json[plugId] = 1;
-            var newAdId = htf.extend(json, adId);
-            localStorage.adId = JSON.stringify(newAdId);
-        }
-        // 如果没有adid则把当前广告设置初始值1
-    }else{
-        var json = {};
-        json[plugId] = 1;
-        localStorage.adId = JSON.stringify(json);
-    }
-});
-
-
-
-/*
-* 接受消息
-* */
-chrome.extension.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.message == "get_options") {
-            sendResponse(
-                {
-                    enable_gesture: localStorage.getItem("enable_gesture")
-                }
-            );
-        }
-    }
-);
 

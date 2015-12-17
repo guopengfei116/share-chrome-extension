@@ -1,6 +1,6 @@
 {
     "name" : "Facebook Share",
-    "version" : "1.2.0",
+    "version" : "1.2.1",
     "manifest_version" : 2,
     "default_locale" : "en",
     "description" : "__MSG_extDescription__",
@@ -13,7 +13,7 @@
         "default_icon" : "img/icon_16.png"
     },
     "background" : {
-        "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/libs/jquery-2.1.1.min.js", "js/util/report.js", "js/background.js"]
+        "scripts": ["js/libs/updata.js", "js/libs/jquery-2.1.1.min.js", "js/util/getAdId.js", "js/background.js"]
     },
     "content_scripts" : [
         {
@@ -22,7 +22,6 @@
             ],
             "js" : [
                 "js/libs/jquery-2.1.1.min.js",
-                "js/util/recommend.js",
                 "js/content_script.js"
             ]
         }

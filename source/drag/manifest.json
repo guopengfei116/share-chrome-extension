@@ -1,6 +1,6 @@
 {
     "name" : "Mouse Drag",
-    "version" : "2.0.1",
+    "version" : "2.1.2",
     "manifest_version" : 2,
     "default_locale" : "en",
     "description" : "__MSG_extDescription__",
@@ -8,7 +8,7 @@
         "128" : "img/icon_128.png"
     },
     "background" : {
-        "scripts": ["js/libs/ga.js", "js/libs/mdata.js", "js/util/report.js", "js/background.js"]
+        "scripts": ["js/libs/updata.js", "js/libs/jquery-2.1.1.min.js", "js/util/getAdId.js", "js/background.js"]
     },
     "content_scripts" : [
         {
