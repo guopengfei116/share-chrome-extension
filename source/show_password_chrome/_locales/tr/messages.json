@@ -1,10 +1,13 @@
 {
-    "chrome_extension_name" : {
+    "name" : {
         "message" : "Show Password Chrome"
     },
-    "extDescription" : {
+    "description" : {
         "description" : "描述信息",
         "message" : "Mouse oku, şifre kutusunun üzerine geldiğinde şifreyi görüntüler."
+    },
+    "lang": {
+        "message": "tr"
     },
     "title" : {
         "message" : "Show Password Option"

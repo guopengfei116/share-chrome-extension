@@ -1,10 +1,13 @@
 {
-    "chrome_extension_name" : {
+    "name" : {
         "message" : "Show Password Chrome"
     },
-    "extDescription" : {
+    "description" : {
         "description" : "描述信息",
         "message" : "This Chrome extension shows password when mouse over password fields"
+    },
+    "lang": {
+        "message": "en"
     },
     "title" : {
         "message" : "Show Password Option"

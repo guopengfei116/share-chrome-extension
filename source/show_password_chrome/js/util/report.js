@@ -3,25 +3,30 @@
  * @*       mdata 和 GA
  * @return  Report
  * */
-(function () {
+;(function () {
 
     var root = this;
     var APP_ID = 311138640;
-    var GA_ID = 'UA-71036067-1';
+    var GA_ID = 'UA-71518763-1';
     var LOCALSTORAGE_UUID_NAME = 'uuid';
     var UUID_URL = 'http://127.0.0.1:7777/uid';
 
     var isUuid = false;
 
-    // 初始化ga上报
-    ga('create', GA_ID, 'auto');
-    ga('send', 'pageview');
+    /**
+     * [mData description] 初始化
+     * @type {[type]}
+     */
+    root.mData = window.mData || [];
+
+    root._gaq = window._gaq || [];
+    _gaq.push(["_trackEvent", GA_ID]);
 
     // 工具方法
     var util = {
         /*
-         * @method 初始化uuid
-         * */
+        * @method 初始化uuid
+        * */
         initUuid : (function () {
             $.ajax({
                 url : UUID_URL,
@@ -44,9 +49,9 @@
         })(),
 
         /*
-         * @method 获取扩展Id
-         * @return {string} extensionId
-         * */
+        * @method 获取扩展Id
+        * @return {string} extensionId
+        * */
         getExtensionId : function () {
             var extensionId = chrome.extension.getURL('').match(/^chrome-extension:\/\/([a-z]+)/)[1];
             if(!extensionId) {
@@ -66,7 +71,7 @@
             if(uuid) {
                 return uuid;
             }else {
-                uuid = 'autoid_' + util.getExtensionId() + '_' + new Date().getTime() + '_' + Math.round(Math.random() * Math.pow(10, 10));
+                uuid = 'autoid_' + util.getExtensionId() + '_' + new Date().getTime() + '_' + parseInt(Math.random()*999);
             }
 
             return uuid;
@@ -79,15 +84,13 @@
         queue : [],
 
         /*
-         * @method 添加到待执行方法队列
-         * @param {string} method 方法名
-         * @param {array} params 参数
-         * */
+        * @method 添加到待执行方法队列
+        * @param {string} method 方法名
+        * @param {array} params 参数
+        * */
         pushQueue : function (method, params) {
             this.queue.push((function (method, params) {
                 return function () {
-                    console.log(method);
-                    console.log(params);
                     Report[method].apply(Report, params);
                 }
             })(method, params));
@@ -96,9 +99,9 @@
         // 运行存储在队列的所有方法
         runQueue : function () {
             this.queue.forEach(function (val, index) {
-                console.log(val);
                 val();
             });
+            this.queue = [];
         },
 
         /*
@@ -128,10 +131,10 @@
         },
 
         /*
-         * @method 判断事件是否上报过
-         * @param {string} eventName 事件名称
-         * @return {boolean}
-         * */
+        * @method 判断事件是否上报过
+        * @param {string} eventName 事件名称
+        * @return {boolean}
+        * */
         eventIsReported : function (eventName) {
             if(localStorage['report_' + eventName]) {
                 return true;
@@ -150,24 +153,20 @@
 
         // ga上报
         ga : function (eventName) {
-            if(eventName === 'install') {
-                ga('send', 'event', 'new_user', localStorage[LOCALSTORAGE_UUID_NAME]);
-            }else {
-                ga('send', 'event', eventName, localStorage[LOCALSTORAGE_UUID_NAME]);
-            }
+            _gaq.push(["_trackEvent", eventName, localStorage[LOCALSTORAGE_UUID_NAME]]);
         },
 
         // mdata上报
         mdata : function (eventName) {
             mData.push(['send', eventName, {
                 appid: APP_ID,
-                uuid : localStorage[LOCALSTORAGE_UUID_NAME]
+                uid : localStorage[LOCALSTORAGE_UUID_NAME]
             }]);
         },
 
         /*
-         * 仅上报一次
-         * */
+        * 仅上报一次
+        * */
         onlyOne : function (eventName) {
             var self = this;
 
@@ -178,7 +177,6 @@
             }
 
             if(!eventName) {
-                console.log('无上报事件');
                 return;
             }
 
@@ -188,16 +186,14 @@
             }
 
             // 上报
-            setTimeout(function () {
-                self.setEventReportDate(eventName);
-                self.mdata(eventName);
-                self.ga(eventName);
-            }, 30);
+            self.setEventReportDate(eventName);
+            self.mdata(eventName);
+            self.ga(eventName);
         },
 
         /*
-         * 同一类型一天只上报一次
-         * */
+        * 同一类型一天只上报一次
+        * */
         oneDayOne : function (eventName) {
             var self = this;
 
@@ -208,7 +204,6 @@
             }
 
             if(!eventName) {
-                console.log('无上报事件');
                 return;
             }
 
@@ -218,16 +213,14 @@
             }
 
             // 上报
-            setTimeout(function () {
-                self.setEventReportDate(eventName);
-                self.mdata(eventName);
-                self.ga(eventName);
-            }, 30);
+            self.setEventReportDate(eventName);
+            self.mdata(eventName);
+            self.ga(eventName);
         },
 
         /*
-         * 上报无限制
-         * */
+        * 上报无限制
+        * */
         infinite : function (eventName) {
             var self = this;
 
@@ -238,15 +231,12 @@
             }
 
             if(!eventName) {
-                console.log('无上报事件');
                 return;
             }
 
             // 上报
-            setTimeout(function () {
-                self.mdata(eventName);
-                self.ga(eventName);
-            }, 30);
+            self.mdata(eventName);
+            self.ga(eventName);
         }
     };
 

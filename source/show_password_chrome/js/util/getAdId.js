@@ -1,4 +1,3 @@
-
 (function () {
     /**
      * [description] 新打开页面时把localStorage.adId传过去

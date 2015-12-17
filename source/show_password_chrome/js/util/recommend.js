@@ -1,4 +1,3 @@
-
 // 常量
 var APP_ID = 311138640;
 var DOMAIN = '//admin.goextension.com';

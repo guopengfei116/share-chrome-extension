@@ -1,10 +1,13 @@
 {
-    "chrome_extension_name" : {
+    "name" : {
         "message" : "Show Password Chrome"
     },
-    "extDescription" : {
+    "description" : {
         "description" : "描述信息",
         "message" : "当鼠标停留在密码框时显示密码"
+    },
+    "lang": {
+        "message": "zh_CN"
     },
     "title" : {
         "message" : "Show Password Option"
