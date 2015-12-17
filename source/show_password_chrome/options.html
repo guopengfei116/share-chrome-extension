@@ -1,11 +1,12 @@
 <html>
     <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="js/lib/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="js/component/show_password.js"></script>
+        <script type="text/javascript" src="js/options.js"></script>
+        <link href="css/options.css" rel="stylesheet" type="text/css">
         <title>Show Password and Go Extension Options</title>
     </head>
-    <script type="text/javascript" src="js/lib/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/util/show_password.js"></script>
-    <script type="text/javascript" src="js/options.js"></script>
-    <link href="css/options.css" rel="stylesheet" type="text/css">
     <body class="body">
         <h1 id="title">
             <img src="img/icon_128.png" />
@@ -13,7 +14,7 @@
         </h1>
         <ul>
             <li>
-                <label id="select-hint">1密码显示模式：</label>
+                <label id="select-hint">密码显示模式：</label>
                 <select id="select">
                     <option id="select_mouseover" value="1" selected="selected">Mouse over</option>
                     <option id="select_double-click" value="2">Double Click</option>
