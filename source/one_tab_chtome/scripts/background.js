@@ -12,3 +12,11 @@ chrome.runtime.onInstalled.addListener(function (result) {
         console.log('安装');
     }
 });
+
+/*
+ * 绑定icon事件监听
+ * */
+chrome.browserAction.onClicked.addListener(function () {
+    // 上报插件启用事件
+    Report.oneDayOne('click_icon');
+});
