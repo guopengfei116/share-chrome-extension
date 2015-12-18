@@ -30,7 +30,8 @@
             ],
             "js" : [
                 "scripts/lib/jquery-2.1.4.min.js",
-                "scripts/util/recommend.js"
+                "scripts/util/recommend.js",
+                "scripts/content_script.js"
             ]
         }
     ],
@@ -39,9 +40,12 @@
         "page": "background/background.html"
     },
 
+    "options_page": "options.html",
+
     "browser_action": {
         "default_title": "__MSG_title__",
-        "default_icon": "images/logo.png"
+        "default_icon": "images/logo.png",
+        "default_popup": "popup/popup.html"
     },
 
     "content_security_policy":"script-src 'self' https://admin.goextension.com https://ssl.google-analytics.com 'unsafe-eval'; object-src 'self';"
