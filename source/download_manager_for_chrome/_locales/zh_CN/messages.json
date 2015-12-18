@@ -1,0 +1,14 @@
+﻿{
+    "name": {
+        "message": "Download Manager For Chrome"
+    },
+    "description": {
+        "message": "只需要点击一下图标，就可以进入chrome下载页"
+    },
+    "title": {
+        "message" : "点击，打开chrome下载页"
+    },
+    "lang": {
+        "message": "zh_CN"
+    }
+}

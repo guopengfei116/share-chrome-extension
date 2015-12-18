@@ -1,0 +1,14 @@
+﻿{
+    "name": {
+        "message": "Download Manager For Chrome"
+    },
+    "description": {
+        "message": "Sólo requieres hacer clic en el ícono para entrar a la Página Chrome de Descargas."
+    },
+    "title": {
+        "message" : "Haz clic para abrir la Página Chrome de Descargas."
+    },
+    "lang": {
+        "message": "es"
+    }
+}

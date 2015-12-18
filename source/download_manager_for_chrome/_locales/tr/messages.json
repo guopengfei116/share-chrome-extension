@@ -1,0 +1,14 @@
+﻿{
+    "name": {
+        "message": "Download Manager For Chrome"
+    },
+    "description": {
+        "message": "Sadece simgeye tıklamanız Chrome indirme sayfasını açmanız için yeterlidir. "
+    },
+    "title": {
+        "message" : "Tek tık ile Chrome indirme sayfasını açar."
+    },
+    "lang": {
+        "message": "tr"
+    }
+}

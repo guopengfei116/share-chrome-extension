@@ -1,0 +1,14 @@
+﻿{
+    "name": {
+        "message": "Download Manager For Chrome"
+    },
+    "description": {
+        "message": "Com o Download manager for Chrome, vá  para uma página de downloads com somente um único clique."
+    },
+    "title": {
+        "message" : "Clique no ícone para abrir uma página de download."
+    },
+    "lang": {
+        "message": "pt_BR"
+    }
+}

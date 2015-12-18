@@ -1,7 +1,18 @@
-#title {
+#header {
+    padding-left: 2px;
     line-height: 40px;
 }
-#title img {
+
+#header img {
     vertical-align: top;
     height: 40px;
+}
+
+#title {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+li {
+    margin-top: 5px;
 }

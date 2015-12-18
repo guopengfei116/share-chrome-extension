@@ -1,0 +1,14 @@
+﻿{
+    "name": {
+        "message": "Download Manager For Chrome"
+    },
+    "description": {
+        "message": "Use the best download manager for Chrome to go to Chrome Downloads page with just a single click"
+    },
+    "title": {
+        "message" : "Click the icon to open Chrome Downloads page"
+    },
+    "lang": {
+        "message": "en"
+    }
+}
