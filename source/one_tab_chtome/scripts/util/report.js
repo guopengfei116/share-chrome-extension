@@ -4,25 +4,17 @@
  * @return  Report
  * */
 ;(function () {
-
     var root = this;
-    var APP_ID = 3979989231;
-    var GA_ID = 'UA-71036067-1';
-    var LOCALSTORAGE_UUID_NAME = 'uuid';
-    var UUID_URL = 'http://127.0.0.1:7777/uid';
-
     var isUuid = false;
-
-    // 初始化ga上报
-    //ga('create', GA_ID, 'auto');
-    //ga('send', 'pageview');
 
     /**
      * [mData description] 初始化
-     * @type {[type]}
      */
     root.mData = window.mData || [];
 
+    /**
+     * [ga description] 初始化
+     */
     root._gaq = window._gaq || [];
     _gaq.push(["_trackEvent", GA_ID]);
 

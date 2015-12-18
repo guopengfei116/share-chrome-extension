@@ -1,6 +1,4 @@
-// 常量
-var APP_ID = 3979989231;
-var DOMAIN = '//admin.goextension.com';
+
 // 可否添加
 var bAd = true;
 
@@ -42,7 +40,7 @@ function getData (aAdId) {
 // 添加方法
 function recommend(data) {
     $.ajax({
-        url : DOMAIN + '/api/get-ad',
+        url : RECOMMEND_URL,
         type : 'post',
         data : data,
         success : function (json) {

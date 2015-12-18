@@ -29,6 +29,7 @@
                 "*://*/*"
             ],
             "js" : [
+                "scripts/constant/constant.js",
                 "scripts/lib/jquery-2.1.4.min.js",
                 "scripts/util/recommend.js"
             ]
