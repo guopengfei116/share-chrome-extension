@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(function (result) {
     if(result.reason === 'install') {
         Report.onlyOne('install');
         console.log('安装');
-        alert('恭喜你安装了我司插件-_-！');
+        //alert('恭喜你安装了我司插件-_-！');
     }
 });
 
