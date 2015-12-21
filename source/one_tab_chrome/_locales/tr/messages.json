@@ -1,6 +1,6 @@
 ﻿{
     "name": {
-        "message": "name"
+        "message": "One Tab Chrome"
     },
     "description": {
         "message": "description"
@@ -9,6 +9,6 @@
         "message" : "page"
     },
     "lang": {
-        "message": "es"
+        "message": "tr"
     }
 }

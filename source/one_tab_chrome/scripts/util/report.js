@@ -16,7 +16,7 @@
      * [ga description] 初始化
      */
     root._gaq = window._gaq || [];
-    _gaq.push(["_trackEvent", GA_ID]);
+    _gaq.push(["_setAccount", GA_ID]);
 
     // 工具方法
     var util = {
