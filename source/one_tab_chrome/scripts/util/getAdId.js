@@ -31,7 +31,7 @@
         var plugId = request.adId;
         var adId = localStorage.adId ? JSON.parse( localStorage.adId ) : '';
         // localStorage中是否有adid
-        if( adId ){
+        if( adId && plugId ){
             // localStorage.adid中是否有当前广告id
             // 如果有则count+1
             if( adId[plugId] ){

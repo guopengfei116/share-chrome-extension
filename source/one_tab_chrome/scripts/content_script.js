@@ -1,26 +1,30 @@
-document.addEventListener("mous\145d\157w\156", function(b) {
-    if (b.button == 2) {
-        var c = b.target;
-        while (c) {
-            if (c instanceof HTMLAnchorElement) {
-                var d = c;
-                var e = c['hre\146'];
-                var f = c.innerText;
-                if (!f) f = '';
-                if (f.length > 0) {
-                    if (f.charAt(0) == ' ') f = f.substr(1)
+document.addEventListener("mousedown", function(e) {
+    if (e.button == 2) {
+        var target = e.target;
+        while(target) {
+            if (target instanceof HTMLAnchorElement) {
+                var href = target['href'];
+                var text = target.innerText;
+                if (!text) {
+                    text = '';
                 }
-                if (f == '') f = e;
-                var g = f;
-                window['\143\150\162om\145']['\162un\164\151m\145']['se\156dMe\163sage'](undefined, {
-                    type: "l\151nkR\151ghtCli\143k",
-                    url: e,
-                    title: g
-                }, function(a) {});
-                break
+                if (text.length > 0) {
+                    if (text.charAt(0) == ' ') {
+                        text = text.substr(1)
+                    }
+                }
+                if (text == '') {
+                    text = href;
+                }
+                window['chrome']['runtime']['sendMessage'](undefined, {
+                    type: "linkRightClick",
+                    url: href,
+                    title: text
+                }, function(ma) {});
+                break;
             } else {
-                c = c.parentNode
+                target = target.parentNode;
             }
         }
     }
-}, true)
+}, true);

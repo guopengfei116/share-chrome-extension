@@ -1,0 +1,29 @@
+.page-header {
+    padding-left: 20px;
+}
+
+.page-header img {
+    vertical-align: bottom;
+    height: 36px;
+}
+
+.block {
+    padding-left: 20px;
+}
+
+.block_urls {
+    margin-top: 10px;
+}
+
+.web-url {
+    margin: 5px 0;
+}
+
+.web-url img {
+    margin-right: 10px;
+    height: 16px;
+}
+
+.web-url .glyphicon {
+    margin-left: 10px;
+}
