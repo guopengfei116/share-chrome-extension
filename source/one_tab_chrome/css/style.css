@@ -1,29 +1,53 @@
-.page-header {
-    padding-left: 20px;
+.panel-heading .panel-title {
+    line-height: 36px;
+    font-size: 20px;
 }
-
-.page-header img {
+.panel-heading .panel-title img {
     vertical-align: bottom;
     height: 36px;
 }
 
-.block {
-    padding-left: 20px;
+.panel-body {
+    padding: 14px 26px;
 }
 
-.block_urls {
-    margin-top: 10px;
+.panel-body .panel-title {
+    margin-bottom: 20px;
 }
 
-.web-url {
-    margin: 5px 0;
-}
-
-.web-url img {
+.panel-body .panel-title img {
+    vertical-align: bottom;
     margin-right: 10px;
-    height: 16px;
+    height: 24px;
 }
 
-.web-url .glyphicon {
-    margin-left: 10px;
+.panel-body .panel-title time {
+    font-size: 70%;
 }
+
+.group {
+    margin-bottom: 6px;
+    line-height: 24px;
+    font-size: 16px;
+}
+
+.list-group {
+    margin-top: 6px;;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.list-group .list-group-item {
+    padding: 4px;
+}
+
+.list-group .list-group-item img {
+    vertical-align: bottom;
+    margin-right: 6px;
+    height: 18px;
+}
+
+.list-group .list-group-item span, .glyphicon-remove {
+    cursor: pointer;
+}
+

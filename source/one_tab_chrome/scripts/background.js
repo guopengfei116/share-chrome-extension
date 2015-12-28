@@ -127,7 +127,7 @@ var Path = {
      * 获取tabs页面URL
      * */
     getUrl : function () {
-        return chrome.runtime.getURL('tabs.html');
+        return chrome.runtime.getURL('tpl/tabs.html');
     },
 
     /*
@@ -146,7 +146,7 @@ var Tab = {
     /*
      * @method 只打开或留下一个tab列表页
      * */
-    updateTabPage : function (reload, cbk) {          // vQ   TV
+    updateTabPage : function (cbk) {
         chrome.tabs.query({}, function (tabs) {
             var activeTab = null;
 
@@ -163,28 +163,29 @@ var Tab = {
                 }
             }
 
-            // 如果存在插件列表页面，则放置到最前端
+            // 已存在插件列表页
             if (activeTab) {
-                if (reload) {
-                    chrome.tabs.reload(activeTab.id, {}, function () {
-                        cbk && cbk();
-                    });
-                }
+
+                // 刷新tabs页
+                chrome.tabs.reload(activeTab.id, {}, function () {});
+
+                // 获取浏览器窗口和页面焦点
                 chrome.tabs.update(activeTab.id, {
                     selected : true
-                }, function () {
-                    chrome.windows.update(activeTab.windowId, {
+                }, function (tab) {
+                    chrome.windows.update(tab.windowId, {
                         focused : true
                     }, function () {
-                        cbk && cbk();
-                    })
+                        cbk && cbk(tab);
+                    });
                 });
+
+            // 不存在则新建一个列表页
             }else {
                 chrome.tabs.create({
                     url : Path.getUrl(),
                     selected : true
                 }, function (tab) {
-                    console.log(tab);
                     cbk && cbk(tab);
                 });
             }
@@ -204,9 +205,7 @@ var Collect = {
         var self = this;
         chrome.windows.getLastFocused(function (wind) {
             self.collectWindTabById(wind.id, function (giveUpTabsId) {
-                // 关闭已收藏的tab列表
-                chrome.tabs.remove(giveUpTabsId, function () {
-                });
+
             });
         });
     },
@@ -219,14 +218,14 @@ var Collect = {
         chrome.tabs.query({
             windowId : windId
         }, function (tabs) {
-            self.collectTab(tabs, true, cbk, groupId);
+            self.collectTab(tabs, true, cbk, groupId, true);
         });
     },
 
     /*
      * 储存一组tabs数据
      * */
-    collectTab : function (tabs, isExcluded, cbk, groupId) {
+    collectTab : function (tabs, isExcluded, cbk, groupId, closeTab) {
         var state = storage.getState();
         var settings = storage.getSettings();
         var tabGroups = state.tabGroups;
@@ -288,12 +287,22 @@ var Collect = {
         }else {
             storage.pushTabsById(groupId, newTabs);
         }
-console.log(11);
-        // 刷新列表页
-        Tab.updateTabPage();
 
-        // 把已处理过的tabId传到回调函数，任调用者处理
-        cbk(giveUpTabsId);
+        if (closeTab) {
+            // 关闭已收藏的tab列表
+            chrome.tabs.remove(giveUpTabsId, function () {
+
+                // 刷新列表页
+                Tab.updateTabPage(function (tabsPage) {
+                    console.log(tabsPage.windowId);
+                });
+            });
+        }else {
+            // 刷新列表页
+            Tab.updateTabPage(function (tabsPage) {
+                console.log(tabsPage.windowId);
+            });
+        }
     }
 };
 

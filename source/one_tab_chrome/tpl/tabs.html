@@ -1,12 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <meta charset="utf-8">
         <script type="text/javascript" src="../scripts/constant/constant.js"></script>
         <script type="text/javascript" src="../scripts/lib/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="../scripts/lib/angular.min.js"></script>
+        <script type="text/javascript" src="../scripts/tab_storage_service.js"></script>
         <script type="text/javascript" src="../scripts/tabs.js"></script>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
-    <body>
-
+    <body ng-controller="TabList">
+        <article class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">
+                    <img src="../images/logo.png" />
+                    One Tab Chrome
+                    <small>total: {{ total }} tabs</small>
+                </h1>
+            </div>
+            <div class="panel-body">
+                <section class="panel-title" ng-repeat="group in tabGroups">
+                    <div class="group">
+                        <img src="../images/logo.png" />
+                        <span>
+                            <i>{{ group.tabsMeta.length }} tabs</i>
+                            <time>Created {{ group.createDate | date:'yyyy-MM-dd hh:mm:ss' }}</time>
+                        </span>
+                    </div>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="button-group">
+                        <div class="btn btn-default" typeof="button">Restall all</div>
+                        <div class="btn btn-default" typeof="button">Delete all</div>
+                        <div class="btn btn-default" typeof="button">Name the tab group</div>
+                        <div class="btn btn-default" typeof="button">Lock the tab group</div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="tab in group.tabsMeta">
+                            <img src="https://www.google.com/s2/favicons?domain={{ getUrlHost(tab.url) }}" />
+                            <span ng-click="open(group.id, tab.id)">{{ tab.title }}</span>
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </article>
     </body>
 </html>
