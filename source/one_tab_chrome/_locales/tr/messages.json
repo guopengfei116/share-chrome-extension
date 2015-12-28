@@ -3,12 +3,36 @@
         "message": "One Tab Chrome"
     },
     "description": {
-        "message": "description"
+        "message": "Tek tıkla tüm sekmeleri kontrol edin."
     },
     "title": {
-        "message" : "page"
+        "message" : "OneTab"
     },
     "lang": {
         "message": "tr"
+    },
+    "total" : {
+        "message": "Toplam"
+    },
+    "tabs" : {
+        "message": "Sekme"
+    },
+    "createTime" : {
+        "message": "Oluşturulma Zamanı："
+    },
+    "restoreAll" : {
+        "message": "Toplam Düzeltme"
+    },
+    "deleteAll": {
+        "message": "Toplam Silme"
+    },
+    "rename_group": {
+        "message": "Sekme Grubunu Tekrar İsimlendir"
+    },
+    "lock_group": {
+        "message": "Sekme Grubunu Kilitle"
+    },
+    "unlock_group": {
+        "message": "Un-Lock this group"
     }
 }

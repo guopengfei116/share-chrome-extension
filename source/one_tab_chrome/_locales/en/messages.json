@@ -3,12 +3,36 @@
         "message": "One Tab Chrome"
     },
     "description": {
-        "message": "description"
+        "message": "Onetab Chrome extension brings all opened tabs together in one tab with a single click"
     },
     "title": {
-        "message" : "page"
+        "message" : "OneTab"
     },
     "lang": {
         "message": "en"
+    },
+    "total" : {
+        "message": "Total"
+    },
+    "tabs" : {
+        "message": "tabs"
+    },
+    "createTime" : {
+        "message": "Created Date："
+    },
+    "restoreAll" : {
+        "message": "Restore all"
+    },
+    "deleteAll": {
+        "message": "Delete all"
+    },
+    "rename_group": {
+        "message": "Rename this group"
+    },
+    "lock_group": {
+        "message": "Lock this group"
+    },
+    "unlock_group": {
+        "message": "Un-Lock this group"
     }
 }

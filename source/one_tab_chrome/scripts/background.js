@@ -288,21 +288,21 @@ var Collect = {
             storage.pushTabsById(groupId, newTabs);
         }
 
-        if (closeTab) {
-            // 关闭已收藏的tab列表
-            chrome.tabs.remove(giveUpTabsId, function () {
+        // 保证至少有一个列表页存在
+        Tab.updateTabPage(
+            function (tab) {
+                if (closeTab) {
+                    // 关闭已收藏的tab列表
+                    chrome.tabs.remove(giveUpTabsId, function () {
 
-                // 刷新列表页
-                Tab.updateTabPage(function (tabsPage) {
-                    console.log(tabsPage.windowId);
-                });
-            });
-        }else {
-            // 刷新列表页
-            Tab.updateTabPage(function (tabsPage) {
-                console.log(tabsPage.windowId);
-            });
-        }
+                        // 刷新列表页
+                        Tab.updateTabPage(function (tabsPage) {
+                            console.log(tabsPage.windowId);
+                        });
+                    });
+                }
+            }
+        );
     }
 };
 

@@ -3,12 +3,36 @@
         "message": "One Tab Chrome"
     },
     "description": {
-        "message": "description"
+        "message": "点击一下，轻松管理所有标签页（黑体加粗-小标题）"
     },
     "title": {
-        "message" : "page"
+        "message" : "OneTab"
     },
     "lang": {
         "message": "zh_CN"
+    },
+    "total" : {
+        "message": "总数"
+    },
+    "tabs" : {
+        "message": "标签页"
+    },
+    "createTime" : {
+        "message": "创建时间："
+    },
+    "restoreAll" : {
+        "message": "全部恢复"
+    },
+    "deleteAll": {
+        "message": "全部删除"
+    },
+    "rename_group": {
+        "message": "重命名标签组"
+    },
+    "lock_group": {
+        "message": "锁定标签组"
+    },
+    "unlock_group": {
+        "message": "Un-Lock this group"
     }
 }

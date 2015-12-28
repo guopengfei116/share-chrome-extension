@@ -20,7 +20,67 @@ app.controller('TabList', [
         function init () {
             $scope.tabGroups = storage.getState().tabGroups || [];
             $scope.total = getTotal($scope.tabGroups);
+            $scope.language = {
+                tabs : chrome.i18n.getMessage('tabs'),
+                createTime : chrome.i18n.getMessage('createTime'),
+                restoreAll : chrome.i18n.getMessage('restoreAll'),
+                deleteAll : chrome.i18n.getMessage('deleteAll'),
+                rename_group : chrome.i18n.getMessage('rename_group'),
+                lock_group : chrome.i18n.getMessage('lock_group'),
+                unlock_group : chrome.i18n.getMessage('unlock_group')
+            };
         }
+
+        /*
+        * 修改组name
+        * */
+        (function () {
+            // 正在编辑的组数据
+            var currentEditGroupData = null;
+            // 正在编辑的组Dom
+            var currentEditGroupDom = null;
+
+            // 每次click事件,事件源如果不是修改name按钮,则触发save-input事件
+            $(document).on('click', function (e) {
+                if ($(e.target).hasClass('btn-rename') || $(e.target).hasClass('group_info_input')) {
+                    return true;
+                }
+                $(this).trigger('save-input');
+            });
+
+            // @method 添加修改名称事件监听
+            function addSaveEvent () {
+                $(document).on('save-input', function (e) {
+                    $scope.$apply(function () {
+                        saveInput();
+                    });
+                });
+            }
+
+            // @method 保存组名称
+            function saveInput () {
+                // 保存后则取消修改名称事件
+                $(document).unbind('save-input');
+                currentEditGroupData.name = currentEditGroupDom.find('.group_info_input').val();
+                currentEditGroupDom.find('.group_info_name').show();
+                currentEditGroupDom.find('.group_info_input').attr('type', 'hidden');
+                storage.setState({
+                    tabGroups : $scope.tabGroups
+                });
+            }
+
+            // @method 修改组名称
+            $scope.rename = function (group, index) {
+                if (currentEditGroupData && currentEditGroupDom) {
+                    saveInput();
+                }
+                currentEditGroupData = group;
+                var $group = currentEditGroupDom = $('.tab-groups').eq(index);
+                $group.find('.group_info_name').hide();
+                $group.find('.group_info_input').attr('type', 'text');
+                addSaveEvent();
+            };
+        })();
 
         /*
          * @method 获取网站url域名

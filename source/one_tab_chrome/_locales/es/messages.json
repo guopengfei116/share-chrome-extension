@@ -3,12 +3,36 @@
         "message": "One Tab Chrome"
     },
     "description": {
-        "message": "description"
+        "message": "Con Onetab Chrome podrás administrar fácilmente varias pestañas en una pantalla de navegación."
     },
     "title": {
-        "message" : "page"
+        "message" : "OneTab"
     },
     "lang": {
         "message": "es"
+    },
+    "total" : {
+        "message": "Total"
+    },
+    "tabs" : {
+        "message": "Pestallas"
+    },
+    "createTime" : {
+        "message": "Fecha de creación："
+    },
+    "restoreAll" : {
+        "message": "Recuperar Todo"
+    },
+    "deleteAll": {
+        "message": "Eliminar Todo"
+    },
+    "rename_group": {
+        "message": "Cambiar el nombre del grupo de pestañas"
+    },
+    "lock_group": {
+        "message": "Bloquear grupo de pestañas"
+    },
+    "unlock_group": {
+        "message": "Un-Lock this group"
     }
 }

@@ -15,25 +15,26 @@
             <div class="panel-heading">
                 <h1 class="panel-title">
                     <img src="../images/logo.png" />
-                    One Tab Chrome
-                    <small>total: {{ total }} tabs</small>
+                    One Tab Chrome16.png
+                    <small>{{ language.total }}: {{ total }} {{ language.tabs }}</small>
                 </h1>
             </div>
             <div class="panel-body">
-                <section class="panel-title" ng-repeat="group in tabGroups" ng-if="group.tabsMeta.length">
+                <section class="panel-title tab-groups" ng-repeat="group in tabGroups track by group.id" ng-if="group.tabsMeta.length">
                     <div class="group">
-                        <img ng-if="group.lock" src="../images/logo.png" />
-                        <span>
-                            <i>{{ group.tabsMeta.length }} tabs</i>
-                            <time>Created {{ group.createDate | date:'yyyy-MM-dd hh:mm:ss' }}</time>
+                        <img ng-if="group.lock" src="../images/lock.png" />
+                        <span class="group_info">
+                            <i class="group_info_name" ng-if="group">{{ group.name ? group.name : group.tabsMeta.length + ' ' + language.tabs }}</i>
+                            <input class="group_info_input" type="hidden" value="{{ group.name ? group.name : group.tabsMeta.length + ' tabs' }}" />
+                            <time class="group_info_date">{{ language.createTime }} {{ group.createDate | date:'yyyy-MM-dd hh:mm:ss' }}</time>
                         </span>
                     </div>
                     <div class="btn-group btn-group-xs" role="group" aria-label="button-group">
-                        <button class="btn btn-default" typeof="button" ng-click="openAll(group.id)">Restall all</button>
-                        <button class="btn btn-default" typeof="button" ng-click="removeAll(group.id)" ng-if="!group.lock">Delete all</button>
-                        <button class="btn btn-default" typeof="button" ng-click="rename()">Name the tab group</button>
-                        <button class="btn btn-default" typeof="button" ng-click="lockAll(group)" ng-if="!group.lock">Lock the tab group</button>
-                        <button class="btn btn-default" typeof="button" ng-click="cancelLockAll(group)" ng-if="group.lock">Cancel Lock the tab group</button>
+                        <button class="btn btn-default" typeof="button" ng-click="openAll(group.id)">{{ language.restoreAll }}</button>
+                        <button class="btn btn-default" typeof="button" ng-click="removeAll(group.id)" ng-if="!group.lock">{{ language.deleteAll }}</button>
+                        <button class="btn btn-default btn-rename" typeof="button" ng-click="rename(group, $index)">{{ language.rename_group }}</button>
+                        <button class="btn btn-default" typeof="button" ng-click="lockAll(group)" ng-if="!group.lock">{{ language.lock_group }}</button>
+                        <button class="btn btn-default" typeof="button" ng-click="cancelLockAll(group)" ng-if="group.lock">{{ language.unlock_group }}</button>
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="tab in group.tabsMeta">

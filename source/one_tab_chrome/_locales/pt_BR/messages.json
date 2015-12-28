@@ -3,12 +3,36 @@
         "message": "One Tab Chrome"
     },
     "description": {
-        "message": "description"
+        "message": "O Onetab Chrome reúne todas as guias Digitalizar/Abrir juntas em uma ficha de registro com um simples clique."
     },
     "title": {
-        "message" : "page"
+        "message" : "OneTab"
     },
     "lang": {
         "message": "pt_BR"
+    },
+    "total" : {
+        "message": "Total"
+    },
+    "tabs" : {
+        "message": "Abas"
+    },
+    "createTime" : {
+        "message": "Tempo de Criação："
+    },
+    "restoreAll" : {
+        "message": "Restaurar tudo"
+    },
+    "deleteAll": {
+        "message": "Apagar tudo"
+    },
+    "rename_group": {
+        "message": "Renomear este grupo"
+    },
+    "lock_group": {
+        "message": "Bloquear este grupo"
+    },
+    "unlock_group": {
+        "message": "Un-Lock this group"
     }
 }
