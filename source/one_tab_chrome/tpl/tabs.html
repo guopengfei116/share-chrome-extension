@@ -20,25 +20,26 @@
                 </h1>
             </div>
             <div class="panel-body">
-                <section class="panel-title" ng-repeat="group in tabGroups">
+                <section class="panel-title" ng-repeat="group in tabGroups" ng-if="group.tabsMeta.length">
                     <div class="group">
-                        <img src="../images/logo.png" />
+                        <img ng-if="group.lock" src="../images/logo.png" />
                         <span>
                             <i>{{ group.tabsMeta.length }} tabs</i>
                             <time>Created {{ group.createDate | date:'yyyy-MM-dd hh:mm:ss' }}</time>
                         </span>
                     </div>
                     <div class="btn-group btn-group-xs" role="group" aria-label="button-group">
-                        <div class="btn btn-default" typeof="button">Restall all</div>
-                        <div class="btn btn-default" typeof="button">Delete all</div>
-                        <div class="btn btn-default" typeof="button">Name the tab group</div>
-                        <div class="btn btn-default" typeof="button">Lock the tab group</div>
+                        <button class="btn btn-default" typeof="button" ng-click="openAll(group.id)">Restall all</button>
+                        <button class="btn btn-default" typeof="button" ng-click="removeAll(group.id)" ng-if="!group.lock">Delete all</button>
+                        <button class="btn btn-default" typeof="button" ng-click="rename()">Name the tab group</button>
+                        <button class="btn btn-default" typeof="button" ng-click="lockAll(group)" ng-if="!group.lock">Lock the tab group</button>
+                        <button class="btn btn-default" typeof="button" ng-click="cancelLockAll(group)" ng-if="group.lock">Cancel Lock the tab group</button>
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item" ng-repeat="tab in group.tabsMeta">
                             <img src="https://www.google.com/s2/favicons?domain={{ getUrlHost(tab.url) }}" />
-                            <span ng-click="open(group.id, tab.id)">{{ tab.title }}</span>
-                            <i class="glyphicon glyphicon-remove"></i>
+                            <span ng-click="open(group, $index)">{{ tab.title }}</span>
+                            <i class="glyphicon glyphicon-remove" ng-click="remove(group, tab.id)" ng-if="!group.lock"></i>
                         </li>
                     </ul>
                 </section>

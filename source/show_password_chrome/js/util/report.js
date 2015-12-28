@@ -212,6 +212,11 @@
                 return;
             }
 
+            // 如果上报DAU,则代表是新的一天,需要清除adId
+            if(eventName == 'visit') {
+                delete localStorage.adId;
+            }
+
             // 上报
             self.setEventReportDate(eventName);
             self.mdata(eventName);

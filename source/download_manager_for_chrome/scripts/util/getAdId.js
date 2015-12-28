@@ -10,7 +10,7 @@
         var aAdId = [],
             oAdId = localStorage.adId ? JSON.parse(localStorage.adId) : '';
         for(var name in oAdId){
-            if( oAdId[name] >= 30 ){
+            if( oAdId[name] >= 90 ){
                 aAdId.push(name);
             }
         }
