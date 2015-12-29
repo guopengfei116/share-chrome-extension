@@ -99,6 +99,11 @@ function ShowPassword () {
         }
     };
 
+    // 销毁功能
+    this.destroy = function () {
+        bing.unbind();
+    };
+
     // 获取最新的操作事件类型
     this.getBehave = function () {
         return this.defaultBehave;
@@ -108,12 +113,15 @@ function ShowPassword () {
     this.init = function () {
         var behave = '', self = this;
         chrome.storage.sync.get(function (data) {
+            if(!data.open) {
+                console.log('未开启');
+                return;
+            }
             if(data.behave) {
                 behave = self.eventMapTable[data.behave];
             }else {
                 behave = self.getBehave();
             }
-            console.log(behave);
             if(!bing[behave]) {
                 throw behave + ':操作方式不存在';
             }

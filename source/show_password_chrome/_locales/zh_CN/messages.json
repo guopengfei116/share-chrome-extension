@@ -29,5 +29,8 @@
     },
     "example" : {
         "message" : "模式实例："
+    },
+    "is_open" : {
+        "message" : "启动功能"
     }
 }

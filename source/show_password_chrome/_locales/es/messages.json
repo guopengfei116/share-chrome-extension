@@ -29,5 +29,8 @@
     },
     "example" : {
         "message" : "Ejemplo："
+    },
+    "is_open" : {
+        "message" : "Activar Función"
     }
 }

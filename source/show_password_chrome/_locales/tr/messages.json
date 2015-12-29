@@ -29,5 +29,8 @@
     },
     "example" : {
         "message" : "Mod Türleri："
+    },
+    "is_open" : {
+        "message" : "Özelliği Başlat"
     }
 }

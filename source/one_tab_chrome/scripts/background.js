@@ -323,7 +323,7 @@ chrome.runtime.onInstalled.addListener(function (result) {
 /*
  * 绑定icon事件监听
  * */
-chrome.browserAction.onClicked.addListener(function () {
+chrome.browserAction.onClicked.addListener(function (tab) {
     // 上报插件启用事件
     Report.onlyOne('click_icon');
     Collect.collectCurrentWindTab();

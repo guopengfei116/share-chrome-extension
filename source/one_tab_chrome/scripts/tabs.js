@@ -21,6 +21,7 @@ app.controller('TabList', [
             $scope.tabGroups = storage.getState().tabGroups || [];
             $scope.total = getTotal($scope.tabGroups);
             $scope.language = {
+                total : chrome.i18n.getMessage('total'),
                 tabs : chrome.i18n.getMessage('tabs'),
                 createTime : chrome.i18n.getMessage('createTime'),
                 restoreAll : chrome.i18n.getMessage('restoreAll'),
