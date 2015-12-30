@@ -1,0 +1,43 @@
+{
+    "name": "__MSG_name__",
+    "description": "__MSG_description__",
+    "manifest_version": 2,
+    "version": "1.0.0",
+    "default_locale" : "en",
+    "optional_permissions": [ "file://*/*" ],
+    "permissions": [
+        "tabs",
+        "http://*/*",
+        "https://*/*" ,
+        "<all_urls>",
+        "background",
+        "cookies",
+        "notifications",
+        "management"
+    ],
+
+    "icons": {
+        "19": "images/icon/19.png",
+        "32": "images/icon/32.png",
+        "48": "images/icon/48.png",
+        "128": "images/icon/128.png"
+    },
+
+    "content_scripts" : [
+        {
+            "matches" : [
+                "*://*/*"
+            ],
+            "js" : [
+                "scripts/plugin.js"
+            ]
+        }
+    ],
+
+    "browser_action": {
+        "default_title": "__MSG_title__",
+        "default_icon": "images/logo.png"
+    },
+
+    "content_security_policy":"script-src 'self' https://admin.goextension.com https://ssl.google-analytics.com 'unsafe-eval'; object-src 'self';"
+}
