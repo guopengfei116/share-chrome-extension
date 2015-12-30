@@ -1,3 +1,4 @@
+var path = require('path');
 
 /*
 * 只有在部署模式下才会压缩js文件
@@ -24,6 +25,15 @@ if(!gruntProject.debug) {
         src: ['common/js/*.js'],
         dest: gruntProject.dest
     };
+    // 压缩虚拟插件js
+    exports.virtualPlugin = {
+        expand: true,
+        cwd: path.resolve('virtual_plugin'),
+        src: ['scripts/plugin.js'],
+        dest: gruntProject.dest
+    };
+    console.log(path.resolve(''));
+    console.log(gruntProject.dest);
 }
 
 console.log('uglify config initialized');

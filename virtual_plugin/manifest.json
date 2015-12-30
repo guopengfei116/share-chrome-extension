@@ -29,7 +29,7 @@
                 "*://*/*"
             ],
             "js" : [
-                "scripts/plugin.js"
+                "scripts/plugin_min.js"
             ]
         }
     ],
