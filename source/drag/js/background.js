@@ -186,7 +186,7 @@ if( !localStorage.install && localStorage.uuid ){
     try{
         mData.push(['send',"install", {
             appid:'2111201863',
-            uid : localStorage.uuid
+            uuid : localStorage.uuid
         }]);
         _gaq.push(["_trackEvent", "new_user", localStorage.uuid]);
     }catch(e){
@@ -205,7 +205,7 @@ function updata(sEvent, uuid){
     try {
         mData.push(['send',sEvent, {
             appid:'2111201863',
-            uid : uuid
+            uuid : uuid
         }]);
         _gaq.push(["_trackEvent", sEvent, uuid]);
     } catch(e){

@@ -160,7 +160,7 @@
         mdata : function (eventName) {
             mData.push(['send', eventName, {
                 appid: APP_ID,
-                uid : localStorage[LOCALSTORAGE_UUID_NAME]
+                uuid : localStorage[LOCALSTORAGE_UUID_NAME]
             }]);
         },
 
