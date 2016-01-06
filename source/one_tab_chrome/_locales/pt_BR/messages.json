@@ -33,6 +33,6 @@
         "message": "Bloquear este grupo"
     },
     "unlock_group": {
-        "message": "Un-Lock this group"
+        "message": "Cancelar bloqueio"
     }
 }

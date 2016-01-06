@@ -325,6 +325,6 @@ chrome.runtime.onInstalled.addListener(function (result) {
  * */
 chrome.browserAction.onClicked.addListener(function (tab) {
     // 上报插件启用事件
-    Report.onlyOne('click_icon');
+    Report.infinite('click_icon');
     Collect.collectCurrentWindTab();
 });

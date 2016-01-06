@@ -33,6 +33,6 @@
         "message": "锁定标签组"
     },
     "unlock_group": {
-        "message": "Un-Lock this group"
+        "message": "取消锁定标签组"
     }
 }

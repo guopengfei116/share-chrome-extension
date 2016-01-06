@@ -33,6 +33,6 @@
         "message": "Lock this group"
     },
     "unlock_group": {
-        "message": "Un-Lock this group"
+        "message": "Unlock this group"
     }
 }
